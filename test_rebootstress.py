@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import os
-import sys
 import logging
 import time
 
@@ -48,6 +47,7 @@ def setup_module():
     os.system("rm -rf reboot_testlog.zip")
 
 def teardown_module():
-    print("collect log")
+    logger.info("collect log")
     os.system("zip reboot_testlog.zip reboottest_log")
     print("reboot stress test finished...")
+    time.sleep(60)
