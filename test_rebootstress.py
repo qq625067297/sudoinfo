@@ -2,6 +2,7 @@
 import os
 import logging
 import time
+import sys
 
 os.system("rm -rf reboottest_log;mkdir reboottest_log")
 
@@ -25,21 +26,25 @@ logger.addHandler(ch)
 logger.addHandler(fh)
 
 def test_warmreboot():
-    logger.info("start warm reboot stress test....")
+    functionname = sys._getframe().f_code.co_name
+    casename = functionname.replace("test_", "")
+    logger.info(f"start {casename} stress test....")
     with open("param.txt") as f:
         param = f.read().strip()
     _ret = os.system("bash ./reboottest_asic.sh %s" % ' '.join(param.split()[:3]))
-    assert _ret == 0, "warm reboot stress failed..."
-    logger.info("warm reboot stress test finished...")
+    assert _ret == 0, f"{casename} stress test failed"
+    logger.info(f"{casename} stress test finished...")
 
 
 def test_coldreboot():
-    logger.info("start cold reboot stress test....")
+    functionname = sys._getframe().f_code.co_name
+    casename = functionname.replace("test_", "")
+    logger.info(f"start {casename} stress test....")
     with open("param.txt") as f:
         param = f.read().strip()
     _ret = os.system("bash ./reboottest_asic.sh %s" % param)
-    assert _ret == 0
-    logger.info("cold reboot stress test finished...")
+    assert _ret == 0, f"{casename} stress test failed"
+    logger.info(f"{casename} stress test finished...")
 
 def setup_module():
     logger.info("clean log...")
@@ -49,5 +54,5 @@ def setup_module():
 def teardown_module():
     logger.info("collect log")
     os.system("zip reboot_testlog.zip reboottest_log")
-    print("reboot stress test finished...")
-    time.sleep(60)
+    logger.info("reboot stress test finished...")
+    time.sleep(120)
