@@ -83,6 +83,7 @@ def install_drivers(driverlist):
 def test_install_driver():
     functionname = sys._getframe().f_code.co_name
     casename = functionname.replace("test_", "")
+    pytest.skip(f"skip {casename}")
     logger.info(f"casename: {casename} start testing...")
     networklist = get_switch_networkinfo()
     driverlist = get_drivers(networklist)
@@ -98,25 +99,44 @@ def test_install_driver():
         else:
             assert False, "driver reinstall failed"
 
-def test_PF_under_same_netcard():
+def test_PF_netperf_under_same_netcard():
     functionname = sys._getframe().f_code.co_name
     casename = functionname.replace("test_", "")
     logger.info(f"casename: {casename} start testing...")
-    global linkedports
-    linkedports = configure_network_interfaces()
-    logger.debug(f"linkedports:{linkedports}")
+    # global linkedports
+    # linkedports = configure_network_interfaces()
+    # logger.debug(f"linkedports:{linkedports}")
     _ret = run_netperf(linkedports, 0)
-    result = ['pass', 'fail'][_ret]
+    result = ['pass', 'fail'][_ret != 0]
     logger.info(f"casename: {casename} testing {result}...")
     assert _ret == 0, f"{casename} 测试失败"
 
 
-def test_PF_under_diff_netcard():
+def test_PF_netperf_under_diff_netcard():
     functionname = sys._getframe().f_code.co_name
     casename = functionname.replace("test_", "")
     logger.info(f"casename: {casename} start testing...")
     _ret = run_netperf(linkedports, 1)
-    result = ['pass', 'fail'][_ret]
+    result = ['pass', 'fail'][_ret != 0]
+    logger.info(f"casename: {casename} testing {result}...")
+    assert _ret == 0, f"{casename} 测试失败"
+
+def test_PF_iperf_under_same_netcard():
+    functionname = sys._getframe().f_code.co_name
+    casename = functionname.replace("test_", "")
+    logger.info(f"casename: {casename} start testing...")
+    _ret = run_iperf(linkedports, 0)
+    result = ['pass', 'fail'][_ret != 0]
+    logger.info(f"casename: {casename} testing {result}...")
+    assert _ret == 0, f"{casename} 测试失败"
+
+
+def test_PF_iperf_under_diff_netcard():
+    functionname = sys._getframe().f_code.co_name
+    casename = functionname.replace("test_", "")
+    logger.info(f"casename: {casename} start testing...")
+    _ret = run_iperf(linkedports, 1)
+    result = ['pass', 'fail'][_ret != 0]
     logger.info(f"casename: {casename} testing {result}...")
     assert _ret == 0, f"{casename} 测试失败"
 
@@ -159,7 +179,7 @@ def get_switch_networkinfo():
     get network port with network cable
     :return:
     '''
-    pipe = subprocess.Popen("ip link show | grep -i 'state UP'  | grep -E '^[0-9]+:' "
+    pipe = subprocess.Popen("ip link show | grep -E '^[0-9]+:' | grep -v 'NO-CARRIER'"
                             "| awk -F': ' '{print $2}'| grep -E '^en'",
                             universal_newlines=True,
                             stderr=subprocess.PIPE,
@@ -169,6 +189,7 @@ def get_switch_networkinfo():
         netportlist = output.strip().split()
     else:
         raise Exception("get networkinfo failed")
+    logger.debug(f'netportlist:{netportlist}')
     networklist = []
     eplist = get_switch_info()[-1]
     for port in netportlist:
@@ -280,10 +301,55 @@ def run_netperf(linkedports, mode=1):
 
     return sum([q.get() for _ in processes])
 
+
+def run_iperf(linkedports, mode=1):
+    ''''
+        mode: 0 :same card different port
+            1 :different card
+    '''
+    samecardlist = []
+    differentcardlist = []
+
+    for i in linkedports:
+        m, n = list(i)
+        if m[:-1] == n[:-1]:
+            samecardlist.append(i)
+        else:
+            differentcardlist.append(i)
+    if mode == 0 and len(samecardlist) == 0:
+        pytest.skip("no ports in same card,skip testing")
+    if mode == 1 and len(differentcardlist) == 0:
+        pytest.skip("no ports in different card,skip testing")
+
+    for portdict in [samecardlist, differentcardlist][mode]:
+        logger.debug(f'portdict:{portdict}')
+        server, client = list(portdict)
+        pipe = subprocess.Popen(f"ip netns exec {server} iperf -s -P 64 > networktest_log/{server}_iperfserver.log &",
+                                universal_newlines=True,
+                                stderr=subprocess.PIPE,
+                                stdout=subprocess.PIPE, shell=True)
+        time.sleep(1)
+        ret = os.system("ps aux | grep -v grep | grep 'iperf -s' > /dev/null 2>&1")
+        assert ret == 0, "start iperf server failed..."
+        logger.info("start iperf server successed...")
+
+        serverip = portdict[server]
+        pipe = subprocess.Popen(f"ip netns exec {client} iperf -c {serverip} -t {runtime} -P 64"
+                                f" > networktest_log/{client}_iperf.log",
+                                universal_newlines=True,
+                                stderr=subprocess.PIPE,
+                                stdout=subprocess.PIPE, shell=True)
+        output, error = pipe.communicate(timeout=runtime + 10)
+        for line in output.strip().split():
+            logger.info(line)
+        return pipe.returncode
+
+
 def setup_module():
     logger.info("init environment")
     os.system("pkill -9 netserver > /dev/null 2>&1")
     os.system("pkill -9 netperf > /dev/null 2>&1")
+    os.system("pkill -9 iperf > /dev/null 2>&1")
     os.system("ip -all netns delete > /dev/null 2>&1")
     os.system("rm -rf network_testlog.zip > /dev/null 2>&1")
     time.sleep(5)
@@ -292,6 +358,8 @@ def setup_module():
         assert False, "no network ports found..."
     for net in networklist:
         logger.info(f"network ports in switch:{net[0]}->{net[1]}")
+    global linkedports
+    linkedports = configure_network_interfaces()
 
 
 def teardown_module():

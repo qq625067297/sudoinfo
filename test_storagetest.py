@@ -7,7 +7,7 @@ import subprocess
 from multiprocessing import Process, Queue
 import pytest
 
-DEBUG = True
+DEBUG = False
 os.system("rm -rf storagetest_log;mkdir storagetest_log")
 
 LOGFILE = "storagetest_log/storagetest_%s.log" % time.strftime("%Y%m%d%H%M%S", time.localtime())
