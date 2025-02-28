@@ -53,6 +53,6 @@ def setup_module():
 
 def teardown_module():
     logger.info("collect log")
-    os.system("zip reboot_testlog.zip reboottest_log")
+    os.system("zip -r reboot_testlog.zip reboottest_log")
     logger.info("reboot stress test finished...")
     time.sleep(120)

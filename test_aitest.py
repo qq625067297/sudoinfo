@@ -155,7 +155,7 @@ def setup_module():
 
 
 def teardown_module():
-    os.system("zip ai_testlog.zip aitest_log")
+    os.system("zip -r ai_testlog.zip aitest_log")
     logger.info("clean logs...")
     # os.system("rm -rf *.log")
 

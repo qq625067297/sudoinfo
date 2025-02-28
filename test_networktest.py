@@ -363,7 +363,7 @@ def setup_module():
 
 
 def teardown_module():
-    os.system("zip network_testlog.zip networktest_log")
+    os.system("zip -r network_testlog.zip networktest_log")
 
 
 def setup():

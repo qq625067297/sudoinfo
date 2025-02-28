@@ -453,7 +453,7 @@ def setup_module():
 
 def teardown_module():
     print("collect log")
-    os.system("zip storage_testlog.zip storagetest_log")
+    os.system("zip -r storage_testlog.zip storagetest_log")
 
 
 def setup():
