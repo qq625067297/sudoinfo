@@ -7,7 +7,6 @@ import subprocess
 from multiprocessing import Process, Queue
 import pytest
 
-
 os.system("rm -rf networktest_log;mkdir networktest_log")
 
 LOGFILE = "networktest_log/networktest_%s.log" % time.strftime("%Y%m%d%H%M%S", time.localtime())
@@ -30,7 +29,8 @@ logger.addHandler(ch)
 logger.addHandler(fh)
 
 linkedports = []
-BASE_IP="100.1.1"
+switch_vd = '1eb6:'
+BASE_IP = "100.1.1"
 NETSERVER_PORT = 9011
 runtime = 600
 
@@ -39,9 +39,9 @@ def get_drivers(networklist):
     driverlist = []
     for net in networklist:
         pipe = subprocess.Popen(f"lspci -ks {net[0]} | grep -i 'kernel driver in use' | awk '{{print $5}}'",
-                                    universal_newlines=True,
-                                    stderr=subprocess.PIPE,
-                                    stdout=subprocess.PIPE, shell=True)
+                                universal_newlines=True,
+                                stderr=subprocess.PIPE,
+                                stdout=subprocess.PIPE, shell=True)
         output, error = pipe.communicate(timeout=10)
         if pipe.returncode == 0:
             driver = output.strip()
@@ -99,6 +99,7 @@ def test_install_driver():
         else:
             assert False, "driver reinstall failed"
 
+
 def test_PF_netperf_under_same_netcard():
     functionname = sys._getframe().f_code.co_name
     casename = functionname.replace("test_", "")
@@ -121,6 +122,7 @@ def test_PF_netperf_under_diff_netcard():
     logger.info(f"casename: {casename} testing {result}...")
     assert _ret == 0, f"{casename} 测试失败"
 
+
 def test_PF_iperf_under_same_netcard():
     functionname = sys._getframe().f_code.co_name
     casename = functionname.replace("test_", "")
@@ -140,8 +142,9 @@ def test_PF_iperf_under_diff_netcard():
     logger.info(f"casename: {casename} testing {result}...")
     assert _ret == 0, f"{casename} 测试失败"
 
+
 def get_switch_info():
-    pipe = subprocess.Popen("lspci -nd 205e: | awk '{if($2==\"0604:\")print $1}'",
+    pipe = subprocess.Popen(f"lspci -nd {switch_vd} | awk '{{if($2==\"0604:\")print $1}}'",
                             universal_newlines=True,
                             stderr=subprocess.PIPE,
                             stdout=subprocess.PIPE, shell=True)
@@ -174,13 +177,14 @@ def get_switch_info():
 
     return [usplist, dsplist, eplist]
 
+
 def get_switch_networkinfo():
     '''
     get network port with network cable
     :return:
     '''
     pipe = subprocess.Popen("ip link show | grep -E '^[0-9]+:' | grep -v 'NO-CARRIER'"
-                            "| awk -F': ' '{print $2}'| grep -E '^en'",
+                            "| awk -F': ' '{print $2}'| grep -E '^en|^eth'",
                             universal_newlines=True,
                             stderr=subprocess.PIPE,
                             stdout=subprocess.PIPE, shell=True)
@@ -208,7 +212,7 @@ def get_switch_networkinfo():
 def configure_network_interfaces():
     networklist = get_switch_networkinfo()
     logger.debug(f"networklist:{networklist}")
-    portnames = [ i[1] for i in networklist ]
+    portnames = [i[1] for i in networklist]
     logger.debug(f'portnames:{portnames}')
     namespaceinfo = {}
     linkedports = []
@@ -230,19 +234,22 @@ def configure_network_interfaces():
         else:
             logger.info(f"create namespace {port} failed...")
             raise Exception(error)
-        namespaceinfo.update({port:IP})
+        namespaceinfo.update({port: IP})
         ip_counter += 1
 
     for i in range(len(portnames) - 1):
         for j in range(i + 1, len(portnames)):
-            pipe = subprocess.Popen(f"ip netns exec {portnames[i]} ping -c 3 {namespaceinfo[portnames[j]]} > /dev/null 2>&1",
-                                    universal_newlines=True,
-                                    stderr=subprocess.PIPE,
-                                    stdout=subprocess.PIPE, shell=True)
+            pipe = subprocess.Popen(
+                f"ip netns exec {portnames[i]} ping -c 3 {namespaceinfo[portnames[j]]} > /dev/null 2>&1",
+                universal_newlines=True,
+                stderr=subprocess.PIPE,
+                stdout=subprocess.PIPE, shell=True)
             output, error = pipe.communicate(timeout=30)
             if pipe.returncode == 0:
-                linkedports.append({portnames[i]:namespaceinfo[portnames[i]], portnames[j]:namespaceinfo[portnames[j]]})
-                logger.info(f'{portnames[i]}-IP:{namespaceinfo[portnames[i]]} link to {portnames[j]}-IP:{namespaceinfo[portnames[j]]}')
+                linkedports.append(
+                    {portnames[i]: namespaceinfo[portnames[i]], portnames[j]: namespaceinfo[portnames[j]]})
+                logger.info(
+                    f'{portnames[i]}-IP:{namespaceinfo[portnames[i]]} link to {portnames[j]}-IP:{namespaceinfo[portnames[j]]}')
 
     return linkedports
 
@@ -253,10 +260,11 @@ def networktest(q, clientport, clientip, serverip, durtime, mode):
                             universal_newlines=True,
                             stderr=subprocess.PIPE,
                             stdout=subprocess.PIPE, shell=True)
-    output, error = pipe.communicate(timeout=durtime+10)
+    output, error = pipe.communicate(timeout=durtime + 10)
     for line in output.strip().split():
         logger.info(line)
     q.put(pipe.returncode)
+
 
 def run_netperf(linkedports, mode=1):
     ''''
@@ -282,16 +290,18 @@ def run_netperf(linkedports, mode=1):
     for portdict in [samecardlist, differentcardlist][mode]:
         logger.debug(f'portdict:{portdict}')
         server, client = list(portdict)
-        pipe = subprocess.Popen(f"ip netns exec {server} netserver -p {NETSERVER_PORT} -D > networktest_log/{server}_netserver.log",
-                                universal_newlines=True,
-                                stderr=subprocess.PIPE,
-                                stdout=subprocess.PIPE, shell=True)
+        pipe = subprocess.Popen(
+            f"ip netns exec {server} netserver -p {NETSERVER_PORT} -D > networktest_log/{server}_netserver.log",
+            universal_newlines=True,
+            stderr=subprocess.PIPE,
+            stdout=subprocess.PIPE, shell=True)
         time.sleep(1)
         ret = os.system("ps aux | grep -v grep | grep netserver > /dev/null 2>&1")
         assert ret == 0, "start netserver failed..."
         logger.info("start netserver successed...")
 
-        processes += [Process(target=networktest, args=(q, client, portdict[client], portdict[server], runtime, mode)) for mode in test_modes]
+        processes += [Process(target=networktest, args=(q, client, portdict[client], portdict[server], runtime, mode))
+                      for mode in test_modes]
 
     for p in processes:
         p.start()

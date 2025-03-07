@@ -4,6 +4,8 @@ import logging
 import time
 import sys
 
+import pytest
+
 os.system("rm -rf reboottest_log;mkdir reboottest_log")
 
 LOGFILE = "reboottest_log/reboottest_%s.log" % time.strftime("%Y%m%d%H%M%S", time.localtime())
@@ -42,6 +44,8 @@ def test_coldreboot():
     logger.info(f"start {casename} stress test....")
     with open("param.txt") as f:
         param = f.read().strip()
+    if len(param.split()) != 6:
+        pytest.skip("no bmc information, cold reboot skipped")
     _ret = os.system("bash ./reboottest_asic.sh %s" % param)
     assert _ret == 0, f"{casename} stress test failed"
     logger.info(f"{casename} stress test finished...")

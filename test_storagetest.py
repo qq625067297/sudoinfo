@@ -30,7 +30,7 @@ logger.addHandler(ch)
 logger.addHandler(fh)
 
 diskname = []
-
+switch_vd = '1eb6:6011'
 
 def create_random_file(file_size):
     """
@@ -71,7 +71,7 @@ def get_switch_disk():
     else:
         raise Exception("No disk found")
 
-    pipe = subprocess.Popen("lspci -Dnd 205e:a001 | sed -n 1p | awk '{print $1}'",
+    pipe = subprocess.Popen(f"lspci -Dnd {switch_vd} | sed -n 1p | awk '{{print $1}}'",
                             universal_newlines=True,
                             stderr=subprocess.PIPE,
                             stdout=subprocess.PIPE, shell=True)
