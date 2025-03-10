@@ -245,7 +245,7 @@ def get_speed_width(bdf, logger):
                            f"lspci -vvvs {bdf} | grep LnkSta: | awk '{{print $3\" \"$6}}'")
     current = current.strip().split()
     ret, cap = callcmd(logger,
-        f"lspci -vvvs {bdf} | grep LnkCap: | awk '{{print $5\" \"$7}}'")
+                       f"lspci -vvvs {bdf} | grep LnkCap: | awk '{{print $5\" \"$7}}'")
     cap = cap.strip().replace(',', ' ').split()
     return cap + current
 
@@ -272,3 +272,78 @@ def get_classcode(bdf):
 def read_config_lspci(bdf, logger):
     ret, msg = callcmd(logger, f"lspci -vvvs {bdf} | grep 'Unknown header type'", timeout=120)
     return ret
+
+
+def sbr_set(bdf, logger):
+    _ret = 0
+    logger.info(f"read data from BDF:{bdf}")
+    ret, orgdata = callcmd(logger, f"setpci -s {bdf} BRIDGE_CONTROL.w")
+    assert ret, f"read data from {bdf} by setpci failed"
+    ret, msg = callcmd(logger, f"setpci -s {bdf} BRIDGE_CONTROL.w={hex(int(orgdata, 16) | (1 << 6))}")
+    assert ret, f"write data to {bdf} by setpci failed"
+    time.sleep(.1)
+    ret, msg = callcmd(logger, f"setpci -s {bdf} BRIDGE_CONTROL.w={hex(int(orgdata, 16) & ~(1 << 6))}")
+    assert ret, f"write data to {bdf} by setpci failed"
+    time.sleep(5)
+    logger.info(f"reset {bdf} success")
+    return ret
+
+
+def bme_set(bdf, logger, status=True):
+    """
+    :param logger:
+    :param bdf:
+    :param status: True:+ False:-
+    :return:
+    """
+    _ret = 0
+    logger.info(f"read data from BDF:{bdf}")
+    ret, orgdata = callcmd(logger, f"setpci -s {bdf} 0x04.w")
+    assert ret, f"read data from {bdf} by setpci failed"
+    if status:
+        ret, msg = callcmd(logger, f"setpci -s {bdf} 0x04.w={hex(int(orgdata, 16) | (1 << 2))}")
+        assert ret, f"write data to {bdf} by setpci failed"
+    else:
+        ret, msg = callcmd(logger, f"setpci -s {bdf} 0x04.w={hex(int(orgdata, 16) & ~(1 << 2))}")
+        assert ret, f"write data to {bdf} by setpci failed"
+        time.sleep(5)
+    logger.info(f"set {bdf} bme{['-', '+'][status]} success")
+    return ret
+
+
+def mem_set(bdf, logger, status=True):
+    """
+    :param logger:
+    :param bdf:
+    :param status: True:+ False:-
+    :return:
+    """
+    _ret = 0
+    logger.info(f"read data from BDF:{bdf}")
+    ret, orgdata = callcmd(logger, f"setpci -s {bdf} 0x04.w")
+    assert ret, f"read data from {bdf} by setpci failed"
+    if status:
+        ret, msg = callcmd(logger, f"setpci -s {bdf} 0x04.w={hex(int(orgdata, 16) | (1 << 1))}")
+        assert ret, f"write data to {bdf} by setpci failed"
+    else:
+        ret, msg = callcmd(logger, f"setpci -s {bdf} 0x04.w={hex(int(orgdata, 16) & ~(1 << 1))}")
+        assert ret, f"write data to {bdf} by setpci failed"
+        time.sleep(5)
+    logger.info(f"set {bdf} mem{['-', '+'][status]} success")
+    return ret
+
+
+dmadriver = 'yd_dma.tar.gz'
+
+
+def install_driver(driver, logger):
+    """
+    :param driver: dma： dma dirver, mep: mep driver , ntb: ntb driver
+    :param logger:
+    :return:
+    """
+    logger.info(f"unzip {driver} driver file")
+    if driver == 'dma':
+        callcmd(logger, f"tar xvf {dmadriver} -C .", timeout=120)
+        ret, msg = callcmd(logger, f"cd yd_dma;make clean;make;insmod yundu_dma.ko", timeout=120)
+        return ret

@@ -6,6 +6,7 @@ import time
 import paramiko
 import json
 import socket
+from utils import dmadriver
 
 os.system("[ ! -d /protocol_logs ] && mkdir protocol_logs")
 LOGFILE = "protocol_logs/main_%s.log" % time.strftime("%Y%m%d%H%M%S", time.localtime())
@@ -181,6 +182,7 @@ def get_all_testcase(filename):
 def main(filename, ip, username, password):
     remotecp(filename, filename, ip=ip, action="put", username=username, password=password)
     remotecp('utils.py', 'utils.py', ip=ip, action="put", username=username, password=password)
+    remotecp(f'driver/dma/{dmadriver}', f'{dmadriver}', ip=ip, action="put", username=username, password=password)
     all_testcase = get_all_testcase(filename)
     for case in all_testcase:
         logger.info(f"Start test {case}...")

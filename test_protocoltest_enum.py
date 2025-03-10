@@ -88,6 +88,40 @@ def test_PCIe_SYS_ENUM_005():
                     assert driver, f'bind {device.device_bdf} driver failed'
 
 
+@log_decorator(logger=logger)
+def test_PCIe_SYS_ENUM_006():
+    install_driver('dma', logger)
+    dmadevice = ''
+    for device in devices:
+        if device.type == 'DMA':
+            dmadevice = device
+            break
+
+    driver = get_driver(dmadevice.device_bdf, logger)
+    if driver:
+        ret, msg = callcmd(logger, f"echo {dmadevice.deice_bdf} > /sys/bus/pci/drivers/{driver}/unbind")
+        if ret:
+            driver = get_driver(dmadevice.device_bdf, logger)
+            assert driver == "", f'unbind {dmadevice.device_bdf} driver failed'
+        ret, msg = callcmd(logger, f"echo {dmadevice.deice_bdf} > /sys/bus/pci/drivers/{driver}/bind")
+        if ret:
+            driver = get_driver(dmadevice.device_bdf, logger)
+            assert driver, f'bind {dmadevice.device_bdf} driver failed'
+    else:
+        assert False, "not dma driver found"
+
+
+@log_decorator(logger=logger)
+def test_PCIe_SYS_ENUM_007():
+    count = 0
+    for device in devices:
+        if device.type in ['DMA', 'MEP']:
+            count += 1
+            logger.debug(f"this is {device.type} device")
+    assert count == 3, 'iep device check failed'
+    logger.info(f"DMA MEP vendor id and device id check pass")
+
+
 def setup_module():
     logger.info("init environment")
     global devices
