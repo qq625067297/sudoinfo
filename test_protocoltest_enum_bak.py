@@ -50,6 +50,7 @@ PCI_CLASS_MASKS = {
     "accelerators": (0x120000, 0xFF0000),
 }
 
+
 def decorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -58,7 +59,9 @@ def decorator(func):
         logger.info(f"casename: {casename} start testing...")
         func(*args, **kwargs)
         logger.info(f"casename: {casename} test finished...")
+
     return wrapper
+
 
 def callcmd(command, timeout=10, ignore=False):
     pipe = subprocess.Popen(command, universal_newlines=True, stderr=subprocess.PIPE,
@@ -74,6 +77,7 @@ def callcmd(command, timeout=10, ignore=False):
         logger.info(
             "Execute command %s succeed.\n %s" % (command, output))
         return True, output
+
 
 def get_switch_info():
     ret, msg = callcmd("lspci -Dnd 205e: | awk '{if($2==\"0604:\")print $1}'")
@@ -92,7 +96,6 @@ def get_switch_info():
         else:
             usplist.append(i)
 
-
     eplist = {}
     for i in dsplist:
         ret, msg = callcmd(f"ls -l {syspath} | egrep -o '{i}/(.*?)' | cut -d'/' -f2")
@@ -101,7 +104,7 @@ def get_switch_info():
                 classid = get_classcode(ep)
                 vd = get_vd(ep)
                 driver = get_driver(ep)
-                eplist.update({ ep: [ classid, vd, driver ]})
+                eplist.update({ep: [classid, vd, driver]})
 
     return [usplist, dsplist, eplist]
 
@@ -117,11 +120,13 @@ def get_driver(bdf):
 
     return msg.strip()
 
+
 def get_classcode(bdf):
     devicepath = os.path.join(f'{syspath}', f'{bdf}', 'class')
     with open(devicepath) as f:
         classcode = f.read().strip()[2:4]
     return classcode
+
 
 @decorator
 def test_PCIe_SYS_ENUM_001():
@@ -137,7 +142,7 @@ def test_PCIe_SYS_ENUM_002():
     eps = switchinfo[2]
     assert eps, f"no ep found..."
     for ep in eps:
-        if eps[ep][0] in [ '02', '01' ]:
+        if eps[ep][0] in ['02', '01']:
             ret, msg = callcmd(f"lspci -vv -s {ep} | grep 'Physical Slot' | awk '{{print $NF}}'")
             if ret and msg:
                 slot = msg.strip()
@@ -165,7 +170,7 @@ def test_PCIe_SYS_ENUM_004():
         if eps[ep][1] == mep_vd:
             logger.debug("this is mep device")
             assert eps[ep][0] == '01', "mep device check failed"
-        if eps[ep][1] in [ dma0_vd, dma1_vd ]:
+        if eps[ep][1] in [dma0_vd, dma1_vd]:
             logger.debug("this is dma device")
             assert eps[ep][0] == '08', "dma device check failed"
 
@@ -175,7 +180,7 @@ def test_PCIe_SYS_ENUM_005():
     eps = switchinfo[2]
     assert eps, f"no ep found..."
     for ep in eps:
-        if eps[ep][0] in [ '01' ]:
+        if eps[ep][0] in ['01']:
             if eps[ep][2]:
                 ret, msg = callcmd(f"echo {ep} > /sys/bus/pci/drivers/{eps[ep][2]}/unbind")
                 if ret:
@@ -189,7 +194,20 @@ def test_PCIe_SYS_ENUM_005():
 
 @decorator
 def test_PCIe_SYS_ENUM_006():
-    pass
+    eps = switchinfo[2]
+    assert eps, f"no ep found..."
+    for ep in eps:
+        if eps[ep][0] in ['01']:
+            if eps[ep][2]:
+                ret, msg = callcmd(f"echo {ep} > /sys/bus/pci/drivers/{eps[ep][2]}/unbind")
+                if ret:
+                    driver = get_driver(ep)
+                    assert driver == "", f'unbind {ep} driver failed'
+                ret, msg = callcmd(f"echo {ep} > /sys/bus/pci/drivers/{eps[ep][2]}/bind")
+                if ret:
+                    driver = get_driver(ep)
+                    assert driver, f'bind {ep} driver failed'
+
 
 @decorator
 def test_PCIe_SYS_ENUM_007():
@@ -232,6 +250,7 @@ def checkdeviceinfo(device):
         assert False, f'cannot get {device} by lspci'
     return width_ret & speed_ret
 
+
 def setup_module():
     logger.info("init environment")
     global switchinfo
@@ -263,9 +282,11 @@ def check_IO_MEM_BAR(bdf):
 
     return _ret
 
+
 def teardown_module():
     # os.system("zip -r network_testlog.zip networktest_log")
     pass
+
 
 def setup():
     pass
