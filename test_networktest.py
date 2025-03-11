@@ -179,10 +179,10 @@ def get_switch_info():
 
 
 def get_switch_networkinfo():
-    '''
+    """
     get network port with network cable
     :return:
-    '''
+    """
     pipe = subprocess.Popen("ip link show | grep -E '^[0-9]+:' | grep -v 'NO-CARRIER'"
                             "| awk -F': ' '{print $2}'| grep -E '^en|^eth'",
                             universal_newlines=True,
@@ -255,22 +255,33 @@ def configure_network_interfaces():
 
 
 def networktest(q, clientport, clientip, serverip, durtime, mode):
-    pipe = subprocess.Popen(f"ip netns exec {clientport} netperf -H {serverip} -L {clientip} "
-                            f"-l {durtime} -t {mode} -p {NETSERVER_PORT} -D 10 > networktest_log/{clientport}_{mode}.log",
-                            universal_newlines=True,
-                            stderr=subprocess.PIPE,
-                            stdout=subprocess.PIPE, shell=True)
-    output, error = pipe.communicate(timeout=durtime + 10)
-    for line in output.strip().split():
-        logger.info(line)
-    q.put(pipe.returncode)
+    try:
+        pipe = subprocess.Popen(f"ip netns exec {clientport} netperf -H {serverip} -L {clientip} "
+                                f"-l {durtime} -t {mode} -p {NETSERVER_PORT} -D 10 > networktest_log/{clientport}_{mode}.log",
+                                universal_newlines=True,
+                                stderr=subprocess.PIPE,
+                                stdout=subprocess.PIPE, shell=True)
+        output, error = pipe.communicate(timeout=durtime + 30)
+        for line in output.strip().split():
+            logger.info(line)
+        q.put(pipe.returncode)
+    except subprocess.TimeoutExpired:
+        logger.error(f"command timeout")
+        # 终止子进程并回收资源
+        pipe.kill()
+        output, error = pipe.communicate()  # 清理管道缓冲区
+        q.put(-1)  # 返回自定义错误码
+
+    except Exception as e:
+        logger.error(f"未知错误: {e}")
+        q.put(-1)
 
 
 def run_netperf(linkedports, mode=1):
-    ''''
+    """
         mode: 0 :same card different port
             1 :different card
-    '''
+    """
     samecardlist = []
     differentcardlist = []
 
@@ -313,10 +324,10 @@ def run_netperf(linkedports, mode=1):
 
 
 def run_iperf(linkedports, mode=1):
-    ''''
+    """
         mode: 0 :same card different port
             1 :different card
-    '''
+    """
     samecardlist = []
     differentcardlist = []
 
@@ -349,7 +360,7 @@ def run_iperf(linkedports, mode=1):
                                 universal_newlines=True,
                                 stderr=subprocess.PIPE,
                                 stdout=subprocess.PIPE, shell=True)
-        output, error = pipe.communicate(timeout=runtime + 10)
+        output, error = pipe.communicate(timeout=runtime + 30)
         for line in output.strip().split():
             logger.info(line)
         return pipe.returncode

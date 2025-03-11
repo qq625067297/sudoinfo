@@ -6,6 +6,7 @@ import time
 import paramiko
 import json
 import socket
+import xml.etree.ElementTree as ET
 from utils import dmadriver
 
 os.system("[ ! -d /protocol_logs ] && mkdir protocol_logs")
@@ -79,9 +80,9 @@ def remotecmd(cmd, ip='192.168.10.67', username='root', password='1', port=22):
                 break
         status = stdout.channel.recv_exit_status()
         if status:
-            logger.error("remote command:%s exec failed" % cmd)
+            logger.error(f"remote command:{cmd} exec failed, return code is {status}")
         else:
-            logger.info("remote command:%s exec success" % cmd)
+            logger.info(f"remote command:{cmd} exec success")
     except paramiko.AuthenticationException:
         logger.error("认证失败！")
         return None
@@ -113,7 +114,7 @@ def remotecp(localfile, remotefile, ip='192.168.10.67', action="put", username='
         logger.error(f"{action} file occurs error: {e}")
         exit(1)
     else:
-        logger.info("%s file success" % ["upload", "download"][action == "get"])
+        logger.info("%s file %s success" % (["upload", "download"][action == "get"], localfile))
     finally:
         sftp.close()
 
@@ -139,17 +140,32 @@ def read_data_file(filename):
     return data
 
 
+def transfer_xml(xml_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    result = []
+    for testcase in root.findall(".//testcase"):
+        status = "passed"
+        if testcase.find("skipped") is not None:
+            status = "skipped"
+        elif testcase.find("failure") or testcase.find("error"):
+            status = "failed"
+        result.append(status)
+    return result
+
+
 def reboot_host(host, username, password):
-    ret = remotecmd("poweroff", ip=host, username=username, password=password)
+    ret = remotecmd("reboot", ip=host, username=username, password=password)
     if ret is None:
-        raise Exception(f"Cannot power off {host}")
-    elif ret == 0:
-        logger.info(f"power off {host} success")
+        raise Exception(f"Cannot reboot {host}")
+    elif ret == 0 or ret == -1 or ret == 255:
+        logger.info(f"{host} reboot success")
     else:
-        logger.info(f"power off {host} failed")
+        logger.info(f"{host} reboot failed, ret is {ret}")
     logger.info(f"waiting for {host} up")
 
-    ret = host_isalive(host)
+    ret = host_isalive(host, username, password)
     if ret == 1:
         logger.error(f"please check {host}")
         raise Exception(f"{host} is not up")
@@ -157,13 +173,14 @@ def reboot_host(host, username, password):
 
 def host_isalive(host, username, password, timeout=600):
     start_time = time.time()
+    time.sleep(60)
     while True:
         current_time = time.time()
         if current_time - start_time >= timeout:
             logger.error(f"Cannot link to {host} in {timeout} seconds...")
             return 1
         else:
-            ret = remotecmd('ls', ip=host, username=username, password=password)
+            ret = remotecmd('ls > /dev/null 2>&1', ip=host, username=username, password=password)
             if ret is None:
                 logger.debug(f"waiting {host} up")
                 time.sleep(10)
@@ -186,14 +203,22 @@ def main(filename, ip, username, password):
     all_testcase = get_all_testcase(filename)
     for case in all_testcase:
         logger.info(f"Start test {case}...")
+        xml_name = f"{case.split('::')[1]}-test-results.xml"
         ret = remotecmd(
-            f"pytest -vvv -s ./{case} --junitxml={case.split('::')[1]}-test-results.xml -s --capture=no "
+            f"pytest -vvv -s ./{case} --junitxml={xml_name} -s --capture=no "
             f"--alluredir=allure-results/{filename.split('.')[0]}", ip=ip, username=username, password=password)
         if ret is None:
             raise Exception(f"cannot connect to {ip}")
+        # copy xml to local, for get result
+        remotecp(xml_name, xml_name, ip=ip, action="get", username=username, password=password)
+        _data = transfer_xml(xml_name)
+        logger.info(f"{case} test status: {_data[0]}")
         ret, msg = compare_tree(ip, username, password)
         if not ret:
             logger.error("pcie_tree is different between pcie_tree.json and pcie_tree_aftertest.json")
+            logger.error("reboot host")
+            reboot_host(ip, username, password)
+        elif _data[0] != 'skipped' and ('test_protocoltest_mem' in case or 'test_protocoltest_reset' in case):
             logger.error("reboot host")
             reboot_host(ip, username, password)
 
@@ -215,7 +240,7 @@ def get_test_logs(ip, username, password):
     remotecmd(
         f"zip -r {zipfile} allure-results *-test-results.xml protocol_logs", ip=ip, username=username, password=password)
     remotecp(zipfile, zipfile, action='get', ip=ip, username=username, password=password)
-    callcmd(f"unzip -q {zipfile}")
+    callcmd(f"unzip -qo {zipfile}")
 
 
 def delete_remote_logs(ip, username, password):

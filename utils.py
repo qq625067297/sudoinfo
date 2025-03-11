@@ -333,6 +333,89 @@ def mem_set(bdf, logger, status=True):
     return ret
 
 
+def cfg_set(bdf, address, data, bit_width, logger, status):
+    _ret = 0
+    logger.info(f"read data from BDF:{bdf}")
+    ret, orgdata = callcmd(logger, f"setpci -s {bdf} {address}.{bit_width}")
+    assert ret, f"read data from {bdf} by setpci failed"
+    if status:
+        data = hex(int(orgdata, 16) | data)
+        ret, msg = callcmd(logger, f"setpci -s {bdf} {address}.{bit_width}={data}")
+        assert ret, f"write data to {bdf} by setpci failed"
+    else:
+        data = hex(int(orgdata, 16) & ~data)
+        ret, msg = callcmd(logger, f"setpci -s {bdf} {address}.{bit_width}={data}")
+        assert ret, f"write data to {bdf} by setpci failed"
+    return ret
+
+
+def devmem2_addr(read, address, offset, logger, bit_width, data=None):
+    """
+    :param read:
+    :param address:
+    :param offset:
+    :param logger:
+    :param bit_width:
+    :param data:
+    :return:
+    """
+    address_with_offset = hex(int(address, 16) + offset)
+    if read:
+        ret, msg = callcmd(logger, rf"devmem2 {address_with_offset} {bit_width}")
+        readdata = re.search(r"Value at address 0x[0-9A-F]+ \(0x[0-9A-F]+\): (0x[0-9A-F]+)", msg)
+        return readdata.group(1)
+    else:
+        ret, msg = callcmd(logger, f"devmem2 {address_with_offset} {bit_width} {data}")
+        writedata = re.search(r"Written (0x[0-9A-F]+); readback (0x[0-9A-F]+)", msg)
+        return writedata.group(1), writedata.group(2)
+
+
+def check_bar(bdf, bar, devicetype, logger):
+    status = False
+    ret, msg = callcmd(logger, rf"lspci -vvvs {bdf} | egrep '\sControl:' | awk '{{print $2,$3}}'")
+    iomem = msg.strip().split()
+    if bar == 'io':
+        if devicetype in ['USP', 'DSP', 'IDSP']:
+            ret, msg = callcmd(logger, rf"lspci -vvvs {bdf} | grep 'I/O behind bridge:'")
+        else:
+            ret, msg = callcmd(logger, rf"lspci -vvvs {bdf} | grep Region | grep 'I/O ports at '")
+        if re.findall(r'ignored|disabled', msg) and iomem[0][-1] == '-':
+            logger.info(f'Control: {iomem[0]}->{msg.strip()}')
+            status = True
+        elif not (re.findall(r'ignored|disabled', msg) or iomem[0][-1] == '-'):
+            logger.info(f'Control: {iomem[0]}->{msg.strip()}')
+            status = True
+        else:
+            logger.info(f'Control: {iomem[0]}->{msg.strip()}')
+            status = False
+    elif bar == 'mem':
+        if devicetype in ['USP', 'DSP', 'IDSP']:
+            ret, msg = callcmd(logger, rf"lspci -vvvs {bdf} | egrep 'Memory behind bridge:'")
+        else:
+            ret, msg = callcmd(logger, rf"lspci -vvvs {bdf} | egrep 'Region [0-9]+: Memory at' | grep size")
+        if re.findall(r'ignored|disabled', msg) and iomem[1][-1] == '-':
+            logger.info(f'Control: {iomem[1]}->{msg.strip()}')
+            status = True
+        elif not (re.findall(r'ignored|disabled', msg) or iomem[1][-1] == '-'):
+            logger.info(f'Control: {iomem[1]}->{msg.strip()}')
+            status = True
+        else:
+            logger.info(f'Control: {iomem[1]}->{msg.strip()}')
+            status = False
+    return status, msg
+
+
+def check_error(bdf, logger):
+    return_data = {}
+    ret, msg = callcmd(logger, rf"lspci -vvvs {bdf} | egrep '(DevSta:|UESta:|CESta:)'")
+    errstatus = msg.strip().split('\n')
+    for line in errstatus:
+        line_tmp = line.strip().split()
+        return_data.update({line_tmp[0]: line_tmp[1:]})
+
+    return return_data
+
+
 dmadriver = 'yd_dma.tar.gz'
 
 
