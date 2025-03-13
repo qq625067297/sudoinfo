@@ -149,7 +149,7 @@ def transfer_xml(xml_file):
         status = "passed"
         if testcase.find("skipped") is not None:
             status = "skipped"
-        elif testcase.find("failure") or testcase.find("error"):
+        elif testcase.find("failure") is not None or testcase.find("error") is not None:
             status = "failed"
         result.append(status)
     return result

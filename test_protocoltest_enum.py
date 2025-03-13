@@ -34,7 +34,7 @@ def test_PCIe_SYS_ENUM_001():
             ep_list.append(device)
     assert len(ep_list), f"no ep found..."
     for ep in ep_list:
-        if ep.class_code == '0x030000':
+        if ep.class_code.startswith('0x03'):
             _ret = ep.cap_width == ep.current_width
         else:
             _ret = [ep.cap_width, ep.cap_speed] == [ep.current_width, ep.current_speed]

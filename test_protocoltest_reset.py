@@ -41,7 +41,7 @@ def test_PCIe_SYS_RST_003():
     for device in devices:
         if device.type == 'USP':
             sbr_set(device.device_bdf)
-            ret = read_config_lspci(device.device_bdf)
+            ret = read_config_lspci(device.device_bdf, logger)
             assert ret == False, "usp sbr test failed"
 
 
@@ -49,8 +49,8 @@ def test_PCIe_SYS_RST_003():
 def test_PCIe_SYS_RST_004():
     for device in devices:
         if device.type == 'DSP':
-            sbr_set(device.device_bdf)
-            ret = read_config_lspci(device.device_bdf)
+            sbr_set(device.device_bdf, logger)
+            ret = read_config_lspci(device.device_bdf, logger)
             assert ret == False, "dsp sbr test failed"
 
 
@@ -58,8 +58,8 @@ def test_PCIe_SYS_RST_004():
 def test_PCIe_SYS_RST_005():
     for device in devices:
         if device.type == 'DMA':
-            sbr_set(device.parent[0])
-            ret = read_config_lspci(device.parent[0])
+            sbr_set(device.parent, logger)
+            ret = read_config_lspci(device.parent, logger)
             assert ret == False, "DMA idsp sbr test failed"
 
 
@@ -67,8 +67,8 @@ def test_PCIe_SYS_RST_005():
 def test_PCIe_SYS_RST_006():
     for device in devices:
         if device.type == 'MEP':
-            sbr_set(device.parent[0])
-            ret = read_config_lspci(device.parent[0])
+            sbr_set(device.parent, logger)
+            ret = read_config_lspci(device.parent, logger)
             assert ret == False, "MEP idsp sbr test failed"
 
 

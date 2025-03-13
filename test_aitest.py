@@ -3,6 +3,7 @@ import os
 import sys
 import time
 import logging
+from utils import *
 
 os.system("rm -rf aitest_log;mkdir aitest_log")
 
@@ -92,10 +93,22 @@ def test_PCIe_SYS_AI_006():
     assert _ret == 0
 
 
+def close_acs():
+    devices = get_switch_info(logger)
+    for device in devices:
+        if device.class_code.startswith('0x03'):
+            ret, msg = callcmd(logger, f"lspci -vvvs {device.parent} | grep 'Access Control Services' | awk '{{print "
+                                       f"$2}}' | tr -d [")
+            if msg:
+                callcmd(logger, f"setpci -s {device.parent} {msg.strip()}+0x06.b=0x0")
+
+
 def test_PCIe_SYS_AI_007():
     functionname = sys._getframe().f_code.co_name
     casename = functionname.replace("test_", "")
     logger.info(f"casename: {casename} start testing...")
+    # close ACS
+    close_acs()
     toolpath = "cuda-samples*/Samples/0_Introduction/simpleP2P"
     tool = toolpath.split('/')[-1]
     _ret = os.system(f"/bin/bash -c 'cd {toolpath};make clean;make;cd -;{toolpath}/{tool} | tee aitest_log/{functionname}.log; exit ${{PIPESTATUS[0]}}'")

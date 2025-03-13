@@ -337,7 +337,7 @@ def test_PCIe_SYS_MEM_018():
     offset = 288
     for device in devices:
         if device.type == 'MEP':
-            mem_set(device.parent[0], logger, False)
+            mem_set(device.parent, logger, False)
             time.sleep(.1)
             ret, msg = check_bar(device.device_bdf, 'mem', 'MEP', logger)
             if ret:
@@ -345,7 +345,7 @@ def test_PCIe_SYS_MEM_018():
                 for address in address_list:
                     ret_data = devmem2_addr(True, address, offset, logger, 'b')
                     assert ret_data == '0x'.ljust(len(ret_data))
-                    error_data = check_error(device.parent[0], logger)
+                    error_data = check_error(device.parent, logger)
                     assert 'UnsupReq+' in error_data['DevSta:']
 
 
@@ -354,7 +354,7 @@ def test_PCIe_SYS_MEM_019():
     offset = 352
     for device in devices:
         if device.type == 'DMA':
-            mem_set(device.parent[0], logger, False)
+            mem_set(device.parent, logger, False)
             time.sleep(.1)
             ret, msg = check_bar(device.device_bdf, 'mem', 'DMA', logger)
             if ret:
@@ -362,7 +362,7 @@ def test_PCIe_SYS_MEM_019():
                 for address in address_list:
                     ret_data = devmem2_addr(True, address, offset, logger, 'b')
                     assert ret_data == '0x'.ljust(len(ret_data))
-                    error_data = check_error(device.parent[0], logger)
+                    error_data = check_error(device.parent, logger)
                     assert 'UnsupReq+' in error_data['DevSta:']
 
 

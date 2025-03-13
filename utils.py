@@ -7,8 +7,9 @@ from functools import wraps
 import re
 from collections import namedtuple
 import json
+from ctypes import *
 
-# devices = []
+
 switch_vendorid = '205e'
 mep_vd = '205e:0030'
 dma_vd = '205e:0020'
@@ -414,6 +415,70 @@ def check_error(bdf, logger):
         return_data.update({line_tmp[0]: line_tmp[1:]})
 
     return return_data
+
+
+class PCI_CONFIG(Structure):
+    _pack_ = 1  # 禁用字节对齐，确保紧密排列
+    _fields_ = [
+        # 前16字节（基础信息）
+        ("VendorID", c_uint16),  # 0x00: 厂商ID
+        ("DeviceID", c_uint16),  # 0x02: 设备ID
+        ("Command", c_uint16),  # 0x04: 命令寄存器
+        ("Status", c_uint16),  # 0x06: 状态寄存器
+        ("RevisionID", c_uint8),  # 0x08: 修订版本号
+        ("ClassCode", c_uint8),  # 0x09: 编程接口（Interface）
+        ("SubClass", c_uint8),  # 0x0A: 子类（Sub Class）
+        ("BaseClass", c_uint8),  # 0x0B: 基类（Base Class）
+        ("CacheLineSize", c_uint8),  # 0x0C: 缓存行大小
+        ("LatencyTimer", c_uint8),  # 0x0D: 延迟计时器
+        ("HeaderType", c_uint8),  # 0x0E: 头部类型（高1位为MF标志）
+        ("BIST", c_uint8),  # 0x0F: BIST控制
+
+        # BAR0-BAR5（基地址寄存器）
+        ("BAR0", c_uint32),  # 0x10: 基地址寄存器0
+        ("BAR1", c_uint32),  # 0x14: 基地址寄存器1
+        ("BAR2", c_uint32),  # 0x18: 基地址寄存器2
+        ("BAR3", c_uint32),  # 0x1C: 基地址寄存器3
+        ("BAR4", c_uint32),  # 0x20: 基地址寄存器4
+        ("BAR5", c_uint32),  # 0x24: 基地址寄存器5
+
+        # 其他通用字段
+        ("CardbusCIS", c_uint32),  # 0x28: Cardbus CIS指针
+        ("SubsystemVendorID", c_uint16),  # 0x2C: 子系统厂商ID
+        ("SubsystemID", c_uint16),  # 0x2E: 子系统ID
+        ("ExpansionROMBase", c_uint32),  # 0x30: 扩展ROM基地址
+        ("CapabilitiesPtr", c_uint8),  # 0x34: 能力列表指针
+        ("Reserved0", c_uint8 * 3),  # 0x35-0x37: 保留
+        ("InterruptLine", c_uint8),  # 0x38: 中断线
+        ("InterruptPin", c_uint8),  # 0x39: 中断引脚
+        ("MinGrant", c_uint8),  # 0x3A: Min Grant
+        ("MaxLatency", c_uint8),  # 0x3B: Max Latency
+    ]
+
+    def get_class_code(self) -> str:
+        return f"{self.BaseClass:02x}:{self.SubClass:02x}:{self.ClassCode:02x}"
+
+    def get_command(self) -> str:
+        return f"{self.Command:04x}"
+
+
+def parse_pci_config(path, field, logger):
+    try:
+        with open(path, "rb") as f:
+            raw_data = f.read()
+
+        # 将二进制数据映射到结构体
+        config = PCI_CONFIG.from_buffer_copy(raw_data)
+
+        # 输出关键信息
+        if field == 'command':
+            data = config.get_command()
+            logger.info(f"Command:{data}")
+            return data
+
+    except Exception as e:
+        logger.error(f"Error: {e}")
+        return None
 
 
 dmadriver = 'yd_dma.tar.gz'
