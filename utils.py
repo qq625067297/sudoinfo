@@ -16,7 +16,7 @@ dma_vd = '205e:0020'
 syspath = "/sys/bus/pci/devices/"
 
 
-def setup_logger(log_name='protocol', sub_dir='enum', log_dir='protocol_log'):
+def setup_logger(log_name='protocol', sub_dir='enum', log_dir='protocol_logs'):
     """初始化日志配置并返回Logger对象"""
     # 确保日志目录存在
     full_log_dir = os.path.join(log_dir, sub_dir)
