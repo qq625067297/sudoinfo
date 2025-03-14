@@ -28,7 +28,6 @@ def get_result(id, usp, mt):
         if id in filename:
             with open(os.path.join(path, filename), 'rb') as f:
                 content = f.read().decode()
-                # print(content)
                 info = re.findall(rf'Number of Tests SKIPPED:\s+(\d+).*?Number of Tests PASSED:\s+(\d+).*?Number of Tests FAILED:\s+(\d+)', content, re.DOTALL)
                 if info[0][0] != '0':
                     status = 'SKIPPED'
