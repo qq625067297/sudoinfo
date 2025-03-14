@@ -1,0 +1,310 @@
+Command Line: ./PCIECVApp -bdf 112:0.0 -td 1.61 -r all 
+PCIECVApp.exe version: 5.0.195.0 -rwxr-xr-x 1 root root 1373512 3月  12 18:23 PCIECVApp
+
+Motherboard: sd-h3c-uniserver-r4900-g6
+    description: Rack Mount Chassis
+    product: H3C UniServer R4900 G6 (0)
+    vendor: New H3C Technologies Co., Ltd.
+    version: N/A
+    serial: 210235A4HDH244000026
+    width: 64 bits
+    capabilities: smbios-3.6.0 dmi-3.6.0 smp vsyscall32
+
+Operating System: Linux sd-H3C-UniServer-R4900-G6 5.4.0-208-generic #228-Ubuntu SMP Fri Feb 7 19:41:33 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+Using Segment 0 with Max Bus 255 from ACPI MCFG Table.
+
+	DUTs   B: D:F VenID DevID   ClassCode	DeviceType	Device Class
+------------------------------------------------------------------------------------------
+NEW:	  1)   0:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	  2)   0:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	  3)   0:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	  4)   0:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	  5)   0:14:0  8086  1BBE   0x060400	Root Port	PCI-to-PCI Bridge
+	       0:20:0  8086  1BCD   0x0C        Type 0 Hdr	Serial Bus Controller
+	       0:20:2  8086  1BCE   0x05        Type 0 Hdr	Memory Controller
+NEW:	  6)   0:20:4  8086  1BFE   0x060000	RC IntEP	Host Bridge
+NEW:	  7)   0:21:0  8086  1BFF   0x088000	RC IntEP	Other Base System Component
+	       0:22:0  8086  1BE0   0x07        Type 0 Hdr	Communications Controller
+	       0:22:1  8086  1BE1   0x07        Type 0 Hdr	Communications Controller
+	       0:22:4  8086  1BE4   0x07        Type 0 Hdr	Communications Controller
+	       0:23:0  8086  1BA2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:24:0  8086  1BF2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:25:0  8086  1BD2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:31:0  8086  1B81   0x06        Type 0 Hdr	Bridge
+	       0:31:4  8086  1BC9   0x0C        Type 0 Hdr	Serial Bus Controller
+	       0:31:5  8086  1BCA   0x0C        Type 0 Hdr	Serial Bus Controller
+NEW:	  8)   1:00:0  1A03  1150   0x060400	PCIe->PCI
+	       2:00:0  1A03  2000   0x03        Type 0 Hdr	Display Controller
+NEW:	  9)  22:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 10)  22:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 11)  22:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 12)  22:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 13)  22:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 14)  66:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 15)  66:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 16)  66:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 17)  66:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 18)  66:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 19)  67:00:0  1000  0016   0x010400	EndPoint	RAID Mass Storage Controller
+NEW:	 20) 110:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 21) 110:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 22) 110:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 23) 110:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 24) 110:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 25) 111:00:0  1EB6  6011   0x060400	Switch Up	PCI-to-PCI Bridge
+NEW:	 26) 112:00:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 27) 112:01:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 28) 112:02:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 29) 112:03:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 30) 112:04:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 31) 112:05:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 32) 112:26:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 33) 112:27:0  1EB6  6011   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 34) 113:00:0  8088  2001   0x020000	EndPoint	Ethernet Network Controller
+NEW:	 35) 113:00:1  8088  2001   0x020000	EndPoint	Ethernet Network Controller
+NEW:	 36) 114:00:0  1C5F  003F   0x010802	EndPoint	NVMe Mass Storage Controller
+NEW:	 37) 115:00:0  144D  A824   0x010802	EndPoint	NVMe Mass Storage Controller
+NEW:	 38) 116:00:0  10DE  1EB8   0x030200	EndPoint	3D Display Controller
+NEW:	 39) 117:00:0  10DE  1EB8   0x030200	EndPoint	3D Display Controller
+NEW:	 40) 119:00:0  1EB6  6011   0x010700	EndPoint	SAS Mass Storage Controller
+NEW:	 41) 120:00:0  1EB6  6011   0x088000	EndPoint	Other Base System Component
+NEW:	 42) 154:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 43) 154:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 44) 154:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 45) 154:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 46) 198:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 47) 198:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 48) 198:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 49) 198:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 50) 242:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 51) 242:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 52) 242:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 53) 242:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 54) 242:01:0  8086  0B25   0x088000	RC IntEP	Other Base System Component
+NEW:	 55) 242:03:0  8086  09A6   0x088000	RC IntEP	Other Base System Component
+NEW:	 56) 242:03:1  8086  09A7   0x088000	RC IntEP	Other Base System Component
+NEW:	 57) 254:00:0  8086  3250   0x088000	RC IntEP	Other Base System Component
+NEW:	 58) 254:00:1  8086  3251   0x088000	RC IntEP	Other Base System Component
+NEW:	 59) 254:00:2  8086  3252   0x088000	RC IntEP	Other Base System Component
+NEW:	 60) 254:00:3  8086  0998   0x060000	RC IntEP	Host Bridge
+NEW:	 61) 254:00:5  8086  3255   0x088000	RC IntEP	Other Base System Component
+NEW:	 62) 254:01:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 63) 254:01:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 64) 254:01:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 65) 254:02:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 66) 254:02:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 67) 254:02:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 68) 254:03:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 69) 254:03:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 70) 254:03:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 71) 254:05:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 72) 254:05:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 73) 254:05:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 74) 254:06:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 75) 254:06:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 76) 254:06:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 77) 254:07:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 78) 254:07:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 79) 254:07:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 80) 254:12:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 81) 254:13:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 82) 254:14:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 83) 254:15:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 84) 254:26:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 85) 254:27:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 86) 254:28:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 87) 254:29:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 88) 255:00:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 89) 255:00:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 90) 255:00:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 91) 255:00:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 92) 255:00:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 93) 255:00:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 94) 255:00:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 95) 255:00:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 96) 255:01:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 97) 255:01:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 98) 255:01:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 99) 255:01:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	100) 255:01:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	101) 255:01:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	102) 255:01:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	103) 255:01:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	104) 255:02:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	105) 255:02:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	106) 255:02:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	107) 255:02:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	108) 255:02:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	109) 255:02:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	110) 255:02:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	111) 255:02:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	112) 255:10:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	113) 255:10:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	114) 255:10:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	115) 255:10:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	116) 255:10:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	117) 255:10:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	118) 255:10:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	119) 255:10:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	120) 255:11:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	121) 255:11:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	122) 255:11:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	123) 255:11:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	124) 255:11:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	125) 255:11:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	126) 255:11:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	127) 255:11:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	128) 255:12:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	129) 255:12:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	130) 255:12:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	131) 255:12:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	132) 255:12:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	133) 255:12:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	134) 255:12:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	135) 255:12:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	136) 255:29:0  8086  344F   0x088000	RC IntEP	Other Base System Component
+NEW:	137) 255:29:1  8086  3457   0x088000	RC IntEP	Other Base System Component
+	     255:30:0  8086  3258   0x08        Type 0 Hdr	Base System Component
+	     255:30:1  8086  3259   0x08        Type 0 Hdr	Base System Component
+	     255:30:2  8086  325A   0x08        Type 0 Hdr	Base System Component
+	     255:30:3  8086  325B   0x08        Type 0 Hdr	Base System Component
+	     255:30:4  8086  325C   0x08        Type 0 Hdr	Base System Component
+	     255:30:5  8086  325D   0x08        Type 0 Hdr	Base System Component
+	     255:30:6  8086  325E   0x08        Type 0 Hdr	Base System Component
+	     255:30:7  8086  325F   0x08        Type 0 Hdr	Base System Component
+
+65379 Bus:Device:Functions scanned with invalid Vendor ID(s) 
+   20 non-PCI(e) devices (or Header only) found.
+Max Bus Number to scan: 255
+Begin PCIECV Test at: 2025/03/13 05:47:20
+Spec Rev: Test against 5.0 spec only
+Device Type:  Switch Downstream Port
+           Selected DUT:  112:00:0 VenID= 1EB6 DevID= 6011 [Wuxi Stars Microsystem Technology Co., Ltd]	PCI-to-PCI Bridge
+Downstream Link Partner:  113:00:0 VenID= 8088 DevID= 2001 {Beijing Wangxun Technology Co., Ltd.}	Ethernet Network Controller
+Number of Retimers in Link:  0
+
+ALERT:  DUT is 32GT/s capable, but the Link Partner is only 8GT/s capable.
+Maximum timeout from reset de-assertion to first allowed Cfg command:      10000ms. (1000ms max for IL)
+Minimum delay from reset de-assertion (and DL_Up when applicable) to first Type 0 Cfg access attempt:  1000ms. ( 100ms max for IL)
+Minimum delay from reset de-assertion (and DL_Up when applicable) to first Type 1 Cfg access attempt:  1000ms. ( 100ms max for IL)
+Stop On Fail iteration 8000 from beginning of execution (0 value means testing will not stop on any failure)
+Reset Mechanism:  ALL
+Link Width chosen: x8.
+Test Selection: Individual Test Case(s)
+Reset LinkSpeed
+
+
+   Starting Test: TD_1_61 LNR Ext Cap Struct
+Rst = SBR
+LP Link Cntl2 = 0xFFFF <- initially read; 0x0063 <- value wrote; value read back after the write -> 0xFFFF; Desired -> 3 = TLS = 0x000F <- Actual.
+
+ERROR:  LP TLS Invalid - out of range; LP not ready?
+
+ERROR:  Set Link Speed failed; Retrain Link bypassed.
+
+ALERT:  Device Reset alert 0x80000007.
+
+ B:D:F=112:0:0 
+Link Status   = 0xB083	Link Control   = 0x0000
+Link Status 2 = 0x021E	Link Control 2 = 0x0003
+Lane Err Sts  = 0x001C	Link Control 3 = 0x0000
+Link 16G Sts  = 0x0000	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0003
+	Slot Status   = 0x0000
+
+ERROR:  showLinkStatus: Error getting downstream PCIe Capability Structure.
+
+ERROR:  There does not appear to be a PCIe link.
+
+FAIL:  Error Initializing PCIe Device.
+LS =  8.0 GT/s	LW = 8
+
+SKIP:  Lightweight Notification Requester Extended Capability Structure not found.
+
+Elapsed time: 3 secs.
+
+     Stopping Test: TD_1_61 LNR Ext Cap Struct
+     Number of: Fails (1); Aborts (0); Warnings (0); Alerts (1); Errors (4)
+
+
+
+   Starting Test: TD_1_61 LNR Ext Cap Struct
+Rst = LDE
+LP Link Cntl2 = 0xFFFF <- initially read; 0x0063 <- value wrote; value read back after the write -> 0xFFFF; Desired -> 3 = TLS = 0x000F <- Actual.
+
+ERROR:  LP TLS Invalid - out of range; LP not ready?
+
+ERROR:  Set Link Speed failed; Reset bypassed.
+
+ALERT:  Device Reset alert 0x80000007.
+
+ B:D:F=112:0:0 
+Link Status   = 0xB083	Link Control   = 0x0000
+Link Status 2 = 0x021E	Link Control 2 = 0x0003
+Lane Err Sts  = 0x001C	Link Control 3 = 0x0000
+Link 16G Sts  = 0x0000	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0003
+	Slot Status   = 0x0000
+
+ERROR:  showLinkStatus: Error getting downstream PCIe Capability Structure.
+
+ERROR:  There does not appear to be a PCIe link.
+
+FAIL:  Error Initializing PCIe Device.
+LS =  8.0 GT/s	LW = 8
+
+SKIP:  Lightweight Notification Requester Extended Capability Structure not found.
+
+Elapsed time: 0 secs.
+
+     Stopping Test: TD_1_61 LNR Ext Cap Struct
+     Number of: Fails (1); Aborts (0); Warnings (0); Alerts (1); Errors (4)
+
+
+
+   Starting Test: TD_1_61 LNR Ext Cap Struct
+Rst = NOT
+LP Link Cntl2 = 0xFFFF <- initially read; 0x0063 <- value wrote; value read back after the write -> 0xFFFF; Desired -> 3 = TLS = 0x000F <- Actual.
+
+ERROR:  LP TLS Invalid - out of range; LP not ready?
+
+ERROR:  Set Link Speed failed; Retrain Link bypassed.
+
+ALERT:  Device Reset alert 0x80000007.
+
+ B:D:F=112:0:0 
+Link Status   = 0xB083	Link Control   = 0x0000
+Link Status 2 = 0x021E	Link Control 2 = 0x0003
+Lane Err Sts  = 0x001C	Link Control 3 = 0x0000
+Link 16G Sts  = 0x0000	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0003
+	Slot Status   = 0x0000
+
+ERROR:  showLinkStatus: Error getting downstream PCIe Capability Structure.
+
+ERROR:  There does not appear to be a PCIe link.
+
+FAIL:  Error Initializing PCIe Device.
+LS =  8.0 GT/s	LW = 8
+
+SKIP:  Lightweight Notification Requester Extended Capability Structure not found.
+
+Elapsed time: 0 secs.
+
+     Stopping Test: TD_1_61 LNR Ext Cap Struct
+     Number of: Fails (1); Aborts (0); Warnings (0); Alerts (1); Errors (4)
+
+Failed:    SBR   8.0 GT/s  TD_1_61 LNR Ext Cap Struct
+Failed:    LDE   8.0 GT/s  TD_1_61 LNR Ext Cap Struct
+Failed:    NOT   8.0 GT/s  TD_1_61 LNR Ext Cap Struct
+           Cumulative Test Summary
+       Number of Tests SKIPPED:       0
+       Number of Tests PASSED:        0
+       Number of Tests FAILED:        3
+ Total Number of Tests RUN:           3
+
+Elapsed time: 0:03
+Test(s) completed at 2025/03/13 05:47:26
+End of PCIECV Testing.
+Total Log Summary [ Fails (3); Aborts (0); Warnings (0); Alerts (3); Errors (12) ]

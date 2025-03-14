@@ -213,6 +213,8 @@ def test_PCIe_SYS_MEM_008():
             ret, msg = callcmd(logger, f'nvme list | grep /dev/ | wc -l', timeout=120)
             newcount = int(msg.strip())
             assert orgcount > newcount, f"usp:{device.device_bdf} bme test failed"
+            error = check_error(device.device_bdf, logger)
+            assert 'UnsupReq+' in error['DevSta:'], f"usp:{device.device_bdf} UR not set"
 
 
 @log_decorator(logger=logger)
@@ -226,6 +228,8 @@ def test_PCIe_SYS_MEM_009():
                 bme_set(device.device_bdf, logger, status=False)
                 ret, msg = callcmd(logger, f'nvme list | grep {diskname}', timeout=120)
                 assert ret, f"dsp:{device.device_bdf} bme test failed"
+                error = check_error(device.device_bdf, logger)
+                assert 'UnsupReq+' in error['DevSta:'], f"usp:{device.device_bdf} UR not set"
             else:
                 logger.info(f"no nvme disk linked to {device.device_bdf}")
 

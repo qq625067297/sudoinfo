@@ -93,6 +93,17 @@ def test_PCIe_SYS_AI_006():
     assert _ret == 0
 
 
+def test_simpleMultiGPU():
+    functionname = sys._getframe().f_code.co_name
+    casename = functionname.replace("test_", "")
+    logger.info(f"casename: {casename} start testing...")
+    toolpath = "cuda-samples*/Samples/0_Introduction/simpleMultiGPU"
+    tool = toolpath.split('/')[-1]
+    _ret = os.system(f"/bin/bash -c 'cd {toolpath};make clean;make;cd -;{toolpath}/{tool} | tee aitest_log/{functionname}.log; exit ${{PIPESTATUS[0]}}'")
+    logger.info(f"casename: {casename}-{tool} testing finished...")
+    assert _ret == 0
+
+
 def close_acs():
     devices = get_switch_info(logger)
     for device in devices:
