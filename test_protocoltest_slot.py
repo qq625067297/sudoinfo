@@ -4,7 +4,7 @@ import pytest
 devices = []
 logger = setup_logger(
     log_name="protocol",
-    sub_dir="cfg",
+    sub_dir="slot",
     log_dir="protocol_logs"  # 可指定绝对路径
 )
 
@@ -32,80 +32,123 @@ def test_PCIe_SYS_SLOT_002():
     for device in devices:
         if device.type == 'DSP':
             COUNT += 1
-            callcmd(logger, f"lspci -vvvs {device.device_bdf} | egrep 'SltCap:|SltCtl:|SltSta:'")
-            path = f'/sys/bus/pci/devices/{device.device_bdf}/config'
-            cfg_set(device.device_bdf, '0x4', 7, 'w', logger, False)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 7 == 0, "config space is update after setpci"
-            cfg_set(device.device_bdf, '0x4', 7, 'w', logger, True)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 7 == 7, "config space is update after setpci"
-    assert COUNT, f"no usp found"
+            ret, msg = callcmd(logger, f"lspci -vvvs {device.device_bdf} | egrep 'SltCap:|SltCtl:|SltSta:' | wc -l")
+            assert int(int(msg.strip(), 16)) == 3, f"DSP {device.device_bdf} Slot Capability & Control check failed"
+    assert COUNT, f"no Dsp found"
 
 
 @log_decorator(logger=logger)
-def test_PCIe_SYS_CFG_002():
+def test_PCIe_SYS_SLOT_003():
     COUNT = 0
     for device in devices:
         if device.type == 'DSP':
             COUNT += 1
-            path = f'/sys/bus/pci/devices/{device.device_bdf}/config'
-            cfg_set(device.device_bdf, '0x4', 7, 'w', logger, False)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 7 == 0, "config space is update after setpci"
-            cfg_set(device.device_bdf, '0x4', 7, 'w', logger, True)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 7 == 7, "config space is update after setpci"
+            # 修改 DSP 端口的 Slot Control 是否能修改,值的对应反应是否符合预期
+            ret, base_addr = callcmd(logger, f"lspci -vvs {device.device_bdf}| grep Downstream |awk -F '[' '{{gsub("
+                                             f"/].*$/,\"\",$2);print$NF}}'")
+            callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w=13ff")
+            res, msg = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w")
+            assert res == "13ff", f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w=13ff fail!"
+            callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w=13f1")
+            res, msg = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w")
+            assert res == "13ff", f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w=13ff fail!"
+
+            # ret, msg = callcmd(logger, f"lspci -vvvs {device.device_bdf} | egrep  -A1 'SltCap:")
     assert COUNT, f"no dsp found"
 
 
 @log_decorator(logger=logger)
-def test_PCIe_SYS_CFG_003():
+def test_PCIe_SYS_SLOT_009():
     COUNT = 0
     for device in devices:
-        if device.type == 'DMA':
+        if device.type == 'DSP':
             COUNT += 1
-            path = f'/sys/bus/pci/devices/{device.device_bdf}/config'
-            cfg_set(device.device_bdf, '0x4', 6, 'w', logger, False)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 6 == 0, "config space is update after setpci"
-            cfg_set(device.device_bdf, '0x4', 6, 'w', logger, True)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 6 == 6, "config space is update after setpci"
-    assert COUNT, f"no DMA found"
+            ret, base_addr = callcmd(logger, f"lspci -vvs {device.device_bdf}| grep Downstream |awk -F '[' '{{gsub("
+                                             f"/].*$/,\"\",$2);print$NF}}'")
+            # 修改 DSP 端口的 Slot Control 的Command Completed Interrupt Enable & Status
+            callcmd(logger, f"lspci -vvs {device.device_bdf} |grep SltCap -A 1 |grep -w NoCompl |awk -F ' "
+                            f"' '{{print $NF}}'")
+            res, slot = callcmd(logger, f"lspci -vvs {device.device_bdf} |grep Slot: |awk -F ' ' '{{print $NF}}'")
+            if res == "NoCompl-":
+                ret, d0 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.b")
+                callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.b=e1")
+                ret, d1 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.b")
+                assert d1 == "e1", f"CmdCplt-->0 set fail!\ninfo: src={d0}, res={d1}"
+                callcmd(logger, f"dmesg -c && echo 0 > /sys/bus/pci/slots/{slot}/power")
+                ret, dmg = callcmd("dmesg")
+                assert "pciehp: Timeout on hotplug command" not in dmg, f"dmesg find 'pciehp: Timeout on hotplug...'\ninfo:\n{dmg}"
+                callcmd(logger, f"dmesg -c && echo 1 > /sys/bus/pci/slots/{slot}/power")
+                dmg = callcmd(logger, "dmesg")
+                assert f"pciehp: Slot({slot}): Link Up" in dmg, f"dmesg not find 'slot...Link Up...'\ninfo:\n{dmg}"
+            else:
+                assert False, f"NoCompl status error!\ninfo:{res}"
+    assert COUNT, f"no DSP found"
 
 
 @log_decorator(logger=logger)
-def test_PCIe_SYS_CFG_004():
+def test_PCIe_SYS_SLOT_010():
     COUNT = 0
     for device in devices:
-        if device.type == 'MEP':
+        if device.type == 'DSP':
             COUNT += 1
-            path = f'/sys/bus/pci/devices/{device.device_bdf}/config'
-            cfg_set(device.device_bdf, '0x4', 6, 'w', logger, False)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 6 == 0, "config space is update after setpci"
-            cfg_set(device.device_bdf, '0x4', 6, 'w', logger, True)
-            ret_data = parse_pci_config(path, 'command', logger)
-            assert int(ret_data, 16) & 6 == 6, "config space is update after setpci"
-    assert COUNT, f"no MEP found"
+            ret, base_addr = callcmd(logger, f"lspci -vvs {device.device_bdf}| grep Downstream |awk -F '[' '{{gsub("
+                                             f"/].*$/,\"\",$2);print$NF}}'")
+            ret, res = callcmd(logger, f"lspci -vvs {device.device_bdf} |grep SltCap -A 1 |grep -w HotPlug |awk -F ' "
+                                       f"' '{{print $7}}'")
+            if res == "HotPlug+":
+                d0 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.b")
+                callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.b=d1")
+                ret, d1 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.b")
+                assert d1 == "d1", f"HPIrq-->0 set fail!\ninfo: src={d0}, res={d1}"
+
+                callcmd(logger, f"dmesg -c && echo 0 > /sys/bus/pci/slots/{device.slot}/power")
+                ret, dmg = callcmd(logger, "dmesg")
+                assert "pciehp: Timeout on hotplug command" not in dmg, f"dmesg is not None!\ninfo:\n{dmg}"
+                callcmd(logger, f"dmesg -c && echo 1 > /sys/bus/pci/slots/{device.slot}/power")
+                ret, dmg = callcmd(logger, "dmesg")
+                assert f"pciehp: Slot({device.slot}): Link Up" not in dmg, f"dmesg is not None!\ninfo:\n{dmg}"
+            else:
+                assert False, f"{res} not support hot plug!"
+
+    assert COUNT, f"no DSP found"
 
 
 @log_decorator(logger=logger)
-def test_PCIe_SYS_CFG_005():
+def test_PCIe_SYS_SLOT_011():
     COUNT = 0
     for device in devices:
-        if device.type == 'EP':
-            if device.class_code in ['0x010802', '0x020000']:
-                COUNT += 1
-                path = f'/sys/bus/pci/devices/{device.device_bdf}/config'
-                cfg_set(device.device_bdf, '0x4', 6, 'w', logger, False)
-                ret_data = parse_pci_config(path, 'command', logger)
-                assert int(ret_data, 16) & 6 == 0, "config space is update after setpci"
-                cfg_set(device.device_bdf, '0x4', 6, 'w', logger, True)
-                ret_data = parse_pci_config(path, 'command', logger)
-                assert int(ret_data, 16) & 6 == 6, "config space is update after setpci"
-    assert COUNT, f"no EP found"
+        if device.type == 'DSP':
+            COUNT += 1
+            ret, base_addr = callcmd(logger, f"lspci -vvs {device.device_bdf}| grep Downstream |awk -F '[' '{{gsub("
+                                             f"/].*$/,\"\",$2);print$NF}}'")
+            # 修改 DSP 端口的 Slot Control 的PowerControl
+            ret, nvme = callcmd(logger, f"ls -l /sys/class/block/ |grep {device.device_bdf} |awk -F ' ' '{{print $9}}'")
+            nvme = nvme[:5]
+            ret, res_hotplug = callcmd(logger, f"lspci -vvs {device.device_bdf} |grep SltCap -A 1 |grep -w HotPlug "
+                                               f"|awk -F ' ' '{{print $7}}'")
+            assert res_hotplug == "HotPlug+", f"SltCap HotPlug is {res_hotplug}, test stop!"
+            ret, res_pwrctrl = callcmd(logger,
+                                       f"lspci -vvs {device.device_bdf} |grep SltCap -A 1 |grep -w PwrCtrl |awk -F "
+                                       f"' ' '{{print $3}}'")
+            assert res_pwrctrl == "PwrCtrl+", f"SltCap PwrCtrl is {res_pwrctrl}, test stop!"
+
+            ret, d0 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w")
+            callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w=17f1")
+            ret, d1 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w")
+            assert d1 == "17f1", f"Power-->1(off) set fail!\ninfo: src={d0}, res={d1}"
+            time.sleep(5)
+            res = callcmd(logger, f"dd if=/dev/{nvme}n1 of=/dev/null count=1000 bs=1024")
+            assert "error" in res, f"src={d0}, set 17f1(power off), but dd success, fail!"
+
+            ret, d0 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w")
+            callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w=13f1")
+            ret, d1 = callcmd(logger, f"setpci -s {device.device_bdf} 0x{base_addr}+0x18.w")
+            assert d1 == "13f1", f"Power-->0(on) set fail!\ninfo: src={d0}, res={d1}"
+            time.sleep(5)
+            res = callcmd(logger, f"dd if=/dev/{nvme}n1 of=/dev/null count=1000 bs=1024")
+            assert "1024000" in res, f"src={d0}, set 13f1(power on), but dd fail!"
+
+    assert COUNT, f"no DSP found"
 
 
 def setup_module():

@@ -1,0 +1,1235 @@
+Command Line: ./PCIECVApp -bdf 112:1.0 -td 3.11 -r all 
+PCIECVApp.exe version: 5.0.195.0 -rwxr-xr-x 1 root root 1373512 2月  18 15:40 PCIECVApp
+
+Motherboard: sd-h3c-uniserver-r4900-g6
+    description: Rack Mount Chassis
+    product: H3C UniServer R4900 G6 (0)
+    vendor: New H3C Technologies Co., Ltd.
+    version: N/A
+    serial: 210235A4HDH244000029
+    width: 64 bits
+    capabilities: smbios-3.6.0 dmi-3.6.0 smp vsyscall32
+
+Operating System: Linux sd-H3C-UniServer-R4900-G6 5.15.0-124-generic #134~20.04.1-Ubuntu SMP Tue Oct 1 15:27:33 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+
+Using Segment 0 with Max Bus 255 from ACPI MCFG Table.
+
+	DUTs   B: D:F VenID DevID   ClassCode	DeviceType	Device Class
+------------------------------------------------------------------------------------------
+NEW:	  1)   0:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	  2)   0:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	  3)   0:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	  4)   0:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	  5)   0:14:0  8086  1BBE   0x060400	Root Port	PCI-to-PCI Bridge
+	       0:20:0  8086  1BCD   0x0C        Type 0 Hdr	Serial Bus Controller
+	       0:20:2  8086  1BCE   0x05        Type 0 Hdr	Memory Controller
+NEW:	  6)   0:20:4  8086  1BFE   0x060000	RC IntEP	Host Bridge
+NEW:	  7)   0:21:0  8086  1BFF   0x088000	RC IntEP	Other Base System Component
+	       0:22:0  8086  1BE0   0x07        Type 0 Hdr	Communications Controller
+	       0:22:1  8086  1BE1   0x07        Type 0 Hdr	Communications Controller
+	       0:22:4  8086  1BE4   0x07        Type 0 Hdr	Communications Controller
+	       0:23:0  8086  1BA2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:24:0  8086  1BF2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:25:0  8086  1BD2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:31:0  8086  1B81   0x06        Type 0 Hdr	Bridge
+	       0:31:4  8086  1BC9   0x0C        Type 0 Hdr	Serial Bus Controller
+	       0:31:5  8086  1BCA   0x0C        Type 0 Hdr	Serial Bus Controller
+NEW:	  8)   1:00:0  1A03  1150   0x060400	PCIe->PCI
+	       2:00:0  1A03  2000   0x03        Type 0 Hdr	Display Controller
+NEW:	  9)  22:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 10)  22:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 11)  22:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 12)  22:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 13)  22:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 14)  66:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 15)  66:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 16)  66:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 17)  66:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 18)  66:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 19)  67:00:0  1000  0016   0x010400	EndPoint	RAID Mass Storage Controller
+NEW:	 20) 110:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 21) 110:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 22) 110:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 23) 110:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 24) 110:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 25) 111:00:0  205E  5104   0x060400	Switch Up	PCI-to-PCI Bridge
+NEW:	 26) 112:01:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 27) 112:02:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 28) 112:03:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 29) 112:04:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 30) 112:28:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 31) 112:29:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 32) 112:30:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 33) 113:00:0  144D  A824   0x010802	EndPoint	NVMe Mass Storage Controller
+NEW:	 34) 117:00:0  205E  0030   0x010802	EndPoint	NVMe Mass Storage Controller
+NEW:	 35) 118:00:0  205E  0020   0x088000	EndPoint	Other Base System Component
+NEW:	 36) 119:00:0  205E  0020   0x088000	EndPoint	Other Base System Component
+NEW:	 37) 154:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 38) 154:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 39) 154:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 40) 154:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 41) 198:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 42) 198:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 43) 198:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 44) 198:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 45) 242:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 46) 242:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 47) 242:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 48) 242:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 49) 242:01:0  8086  0B25   0x088000	RC IntEP	Other Base System Component
+NEW:	 50) 242:03:0  8086  09A6   0x088000	RC IntEP	Other Base System Component
+NEW:	 51) 242:03:1  8086  09A7   0x088000	RC IntEP	Other Base System Component
+NEW:	 52) 254:00:0  8086  3250   0x088000	RC IntEP	Other Base System Component
+NEW:	 53) 254:00:1  8086  3251   0x088000	RC IntEP	Other Base System Component
+NEW:	 54) 254:00:2  8086  3252   0x088000	RC IntEP	Other Base System Component
+NEW:	 55) 254:00:3  8086  0998   0x060000	RC IntEP	Host Bridge
+NEW:	 56) 254:00:5  8086  3255   0x088000	RC IntEP	Other Base System Component
+NEW:	 57) 254:01:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 58) 254:01:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 59) 254:01:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 60) 254:02:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 61) 254:02:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 62) 254:02:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 63) 254:03:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 64) 254:03:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 65) 254:03:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 66) 254:05:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 67) 254:05:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 68) 254:05:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 69) 254:06:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 70) 254:06:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 71) 254:06:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 72) 254:07:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 73) 254:07:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 74) 254:07:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 75) 254:12:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 76) 254:13:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 77) 254:14:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 78) 254:15:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 79) 254:26:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 80) 254:27:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 81) 254:28:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 82) 254:29:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 83) 255:00:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 84) 255:00:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 85) 255:00:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 86) 255:00:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 87) 255:00:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 88) 255:00:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 89) 255:00:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 90) 255:00:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 91) 255:01:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 92) 255:01:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 93) 255:01:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 94) 255:01:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 95) 255:01:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 96) 255:01:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 97) 255:01:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 98) 255:01:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 99) 255:02:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	100) 255:02:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	101) 255:02:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	102) 255:02:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	103) 255:02:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	104) 255:02:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	105) 255:02:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	106) 255:02:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	107) 255:10:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	108) 255:10:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	109) 255:10:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	110) 255:10:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	111) 255:10:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	112) 255:10:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	113) 255:10:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	114) 255:10:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	115) 255:11:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	116) 255:11:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	117) 255:11:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	118) 255:11:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	119) 255:11:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	120) 255:11:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	121) 255:11:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	122) 255:11:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	123) 255:12:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	124) 255:12:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	125) 255:12:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	126) 255:12:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	127) 255:12:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	128) 255:12:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	129) 255:12:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	130) 255:12:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	131) 255:29:0  8086  344F   0x088000	RC IntEP	Other Base System Component
+NEW:	132) 255:29:1  8086  3457   0x088000	RC IntEP	Other Base System Component
+	     255:30:0  8086  3258   0x08        Type 0 Hdr	Base System Component
+	     255:30:1  8086  3259   0x08        Type 0 Hdr	Base System Component
+	     255:30:2  8086  325A   0x08        Type 0 Hdr	Base System Component
+	     255:30:3  8086  325B   0x08        Type 0 Hdr	Base System Component
+	     255:30:4  8086  325C   0x08        Type 0 Hdr	Base System Component
+	     255:30:5  8086  325D   0x08        Type 0 Hdr	Base System Component
+	     255:30:6  8086  325E   0x08        Type 0 Hdr	Base System Component
+	     255:30:7  8086  325F   0x08        Type 0 Hdr	Base System Component
+
+65384 Bus:Device:Functions scanned with invalid Vendor ID(s) 
+   20 non-PCI(e) devices (or Header only) found.
+Max Bus Number to scan: 255
+Begin PCIECV Test at: 2025/03/17 23:44:30
+Spec Rev: Test against 5.0 spec only
+Device Type:  Switch Downstream Port
+           Selected DUT:  112:01:0 VenID= 205E DevID= 5104 [Unknown]	PCI-to-PCI Bridge
+Downstream Link Partner:  113:00:0 VenID= 144D DevID= A824 {Samsung Electronics Co., Ltd.}	NVMe Mass Storage Controller
+Number of Retimers in Link:  0
+
+ALERT:  DUT is 32GT/s capable, but the Link Partner is only 16GT/s capable.
+Maximum timeout from reset de-assertion to first allowed Cfg command:      10000ms. (1000ms max for IL)
+Minimum delay from reset de-assertion (and DL_Up when applicable) to first Type 0 Cfg access attempt:  1000ms. ( 100ms max for IL)
+Minimum delay from reset de-assertion (and DL_Up when applicable) to first Type 1 Cfg access attempt:  1000ms. ( 100ms max for IL)
+Stop On Fail iteration 8000 from beginning of execution (0 value means testing will not stop on any failure)
+Reset Mechanism:  ALL
+Link Width chosen: x8.
+Test Selection: Individual Test Case(s)
+Reset LinkSpeed
+
+
+   Starting Test: TD_3_11 Supported Link Width (DwnStr Ports)
+Rst = SBR
+LS = 16.0 GT/s	LW = 8
+Expected Link Width is x8.
+
+ B:D:F=112:1:0 
+Link Status   = 0xF084	Link Control   = 0x0000
+Link Status 2 = 0x421E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0030	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0010
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0001
+	Slot Status   = 0x0040
+
+ B:D:F=113:0:0 
+Link Status   = 0x1084	Link Control   = 0x0000
+Link Status 2 = 0x011E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0000	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+
+		Begin of loop
+1	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+2	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+3	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+4	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+5	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+6	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+7	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+8	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+9	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+10	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+11	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+12	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+13	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+14	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+15	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+16	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+17	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+18	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+19	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+20	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+21	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+22	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+23	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+24	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+25	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+26	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+27	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+28	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+29	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+30	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+31	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+32	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+33	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+34	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+35	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+36	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+37	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+38	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+39	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+40	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+41	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+42	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+43	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+44	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+45	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+46	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+47	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+48	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+49	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+50	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+51	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+52	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+53	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+54	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+55	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+56	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+57	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+58	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+59	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+60	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+61	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+62	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+63	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+64	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+65	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+66	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+67	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+68	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+69	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+70	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+71	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+72	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+73	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+74	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+75	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+76	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+77	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+78	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+79	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+80	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+81	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+82	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+83	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+84	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+85	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+86	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+87	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+88	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+89	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+90	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+91	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+92	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+93	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+94	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+95	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+96	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+97	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+98	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+99	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+100	Rst = SBR
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+
+		End of loop
+
+ B:D:F=112:1:0 
+Link Status   = 0xF084	Link Control   = 0x0000
+Link Status 2 = 0x421E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0030	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0030
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0001
+	Slot Status   = 0x0040
+
+ B:D:F=113:0:0 
+Link Status   = 0x1084	Link Control   = 0x0000
+Link Status 2 = 0x011E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0000	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+
+Elapsed time: 517 secs.
+
+     Stopping Test: TD_3_11 Supported Link Width (DwnStr Ports)
+     Number of: Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0)
+
+
+
+   Starting Test: TD_3_11 Supported Link Width (DwnStr Ports)
+Rst = LDE
+LS = 16.0 GT/s	LW = 8
+Expected Link Width is x8.
+
+ B:D:F=112:1:0 
+Link Status   = 0xF084	Link Control   = 0x0000
+Link Status 2 = 0x421E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0030	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0030
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0001
+	Slot Status   = 0x0040
+
+ B:D:F=113:0:0 
+Link Status   = 0x1084	Link Control   = 0x0000
+Link Status 2 = 0x011E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0000	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+
+		Begin of loop
+1	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+2	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+3	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+4	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+5	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+6	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+7	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+8	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+9	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+10	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+11	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+12	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+13	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+14	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+15	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+16	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+17	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+18	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+19	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+20	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+21	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+22	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+23	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+24	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+25	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+26	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+27	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+28	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+29	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+30	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+31	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+32	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+33	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+34	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+35	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+36	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+37	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+38	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+39	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+40	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+41	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+42	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+43	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+44	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+45	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+46	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+47	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+48	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+49	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+50	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+51	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+52	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+53	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+54	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+55	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+56	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+57	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+58	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+59	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+60	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+61	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+62	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+63	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+64	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+65	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+66	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+67	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+68	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+69	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+70	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+71	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+72	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+73	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+74	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+75	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+76	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+77	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+78	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+79	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+80	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+81	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+82	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+83	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+84	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+85	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+86	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+87	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+88	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+89	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+90	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+91	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+92	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+93	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+94	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+95	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+96	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+97	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+98	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+99	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+100	Rst = LDE
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+
+		End of loop
+
+ B:D:F=112:1:0 
+Link Status   = 0xF084	Link Control   = 0x0000
+Link Status 2 = 0x421E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0030	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0030
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0001
+	Slot Status   = 0x0040
+
+ B:D:F=113:0:0 
+Link Status   = 0x1084	Link Control   = 0x0000
+Link Status 2 = 0x011E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0000	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+
+Elapsed time: 518 secs.
+
+     Stopping Test: TD_3_11 Supported Link Width (DwnStr Ports)
+     Number of: Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0)
+
+
+
+   Starting Test: TD_3_11 Supported Link Width (DwnStr Ports)
+Rst = NOT
+LS = 16.0 GT/s	LW = 8
+Expected Link Width is x8.
+
+ B:D:F=112:1:0 
+Link Status   = 0xF084	Link Control   = 0x0000
+Link Status 2 = 0x421E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0030	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0001
+	Slot Status   = 0x0040
+
+ B:D:F=113:0:0 
+Link Status   = 0x1084	Link Control   = 0x0000
+Link Status 2 = 0x011E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0000	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+
+		Begin of loop
+1	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+2	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+3	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+4	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+5	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+6	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+7	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+8	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+9	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+10	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+11	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+12	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+13	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+14	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+15	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+16	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+17	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+18	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+19	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+20	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+21	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+22	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+23	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+24	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+25	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+26	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+27	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+28	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+29	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+30	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+31	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+32	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+33	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+34	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+35	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+36	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+37	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+38	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+39	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+40	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+41	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+42	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+43	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+44	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+45	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+46	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+47	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+48	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+49	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+50	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+51	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+52	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+53	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+54	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+55	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+56	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+57	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+58	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+59	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+60	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+61	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+62	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+63	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+64	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+65	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+66	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+67	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+68	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+69	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+70	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+71	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+72	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+73	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+74	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+75	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+76	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+77	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+78	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+79	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+80	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+81	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+82	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+83	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+84	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+85	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+86	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+87	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+88	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+89	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+90	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+91	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+92	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+93	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+94	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+95	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+96	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+97	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+98	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+99	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+100	Rst = NOT
+2ms 		LP Width=x8,	DUT Width=x8
+		x8
+
+		End of loop
+
+ B:D:F=112:1:0 
+Link Status   = 0xF084	Link Control   = 0x0000
+Link Status 2 = 0x421E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0030	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+Link 32G Sts  = 0x0200	Link 32G Cntrl = 0x0001
+	Slot Status   = 0x0040
+
+ B:D:F=113:0:0 
+Link Status   = 0x1084	Link Control   = 0x0000
+Link Status 2 = 0x011E	Link Control 2 = 0x0024
+Lane Err Sts  = 0x0000	Link Control 3 = 0x0000
+Link 16G Sts  = 0x000F	Link 16G Cntrl = 0x0000	Link 16G Parity = 0x0000
+
+Elapsed time: 1 secs.
+
+     Stopping Test: TD_3_11 Supported Link Width (DwnStr Ports)
+     Number of: Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0)
+
+Passed:    SBR  16.0 GT/s  TD_3_11 Supported Link Width (DwnStr Ports)
+Passed:    LDE  16.0 GT/s  TD_3_11 Supported Link Width (DwnStr Ports)
+Passed:    NOT  16.0 GT/s  TD_3_11 Supported Link Width (DwnStr Ports)
+           Cumulative Test Summary
+       Number of Tests SKIPPED:       0
+       Number of Tests PASSED:        3
+       Number of Tests FAILED:        0
+ Total Number of Tests RUN:           3
+
+Elapsed time: 17:16
+Test(s) completed at 2025/03/18 00:01:51
+End of PCIECV Testing.
+Total Log Summary [ Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0) ]

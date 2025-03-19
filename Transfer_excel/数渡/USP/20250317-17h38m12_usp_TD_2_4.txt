@@ -1,0 +1,965 @@
+Command Line: ./PCIECVApp -bdf 111:0.0 -td 2.4 -r all 
+PCIECVApp.exe version: 5.0.195.0 -rwxr-xr-x 1 root root 1373512 2月  26 10:02 PCIECVApp
+
+Motherboard: sd-h3c-uniserver-r4900-g6
+    description: Rack Mount Chassis
+    product: H3C UniServer R4900 G6 (0)
+    vendor: New H3C Technologies Co., Ltd.
+    version: N/A
+    serial: 210235A4HDH244000027
+    width: 64 bits
+    capabilities: smbios-3.6.0 dmi-3.6.0 smp vsyscall32
+
+Operating System: Linux sd-H3C-UniServer-R4900-G6 5.15.0-134-generic #145~20.04.1-Ubuntu SMP Mon Feb 17 13:27:16 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+Using Segment 0 with Max Bus 255 from ACPI MCFG Table.
+
+	DUTs   B: D:F VenID DevID   ClassCode	DeviceType	Device Class
+------------------------------------------------------------------------------------------
+NEW:	  1)   0:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	  2)   0:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	  3)   0:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	  4)   0:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	  5)   0:14:0  8086  1BBE   0x060400	Root Port	PCI-to-PCI Bridge
+	       0:20:0  8086  1BCD   0x0C        Type 0 Hdr	Serial Bus Controller
+	       0:20:2  8086  1BCE   0x05        Type 0 Hdr	Memory Controller
+NEW:	  6)   0:20:4  8086  1BFE   0x060000	RC IntEP	Host Bridge
+NEW:	  7)   0:21:0  8086  1BFF   0x088000	RC IntEP	Other Base System Component
+	       0:22:0  8086  1BE0   0x07        Type 0 Hdr	Communications Controller
+	       0:22:1  8086  1BE1   0x07        Type 0 Hdr	Communications Controller
+	       0:22:4  8086  1BE4   0x07        Type 0 Hdr	Communications Controller
+	       0:23:0  8086  1BA2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:24:0  8086  1BF2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:25:0  8086  1BD2   0x01        Type 0 Hdr	Mass Storage Controller
+	       0:31:0  8086  1B81   0x06        Type 0 Hdr	Bridge
+	       0:31:4  8086  1BC9   0x0C        Type 0 Hdr	Serial Bus Controller
+	       0:31:5  8086  1BCA   0x0C        Type 0 Hdr	Serial Bus Controller
+NEW:	  8)   1:00:0  1A03  1150   0x060400	PCIe->PCI
+	       2:00:0  1A03  2000   0x03        Type 0 Hdr	Display Controller
+NEW:	  9)  22:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 10)  22:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 11)  22:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 12)  22:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 13)  22:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 14)  66:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 15)  66:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 16)  66:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 17)  66:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 18)  66:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 19)  66:05:0  8086  352C   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 20)  67:00:0  1000  0016   0x010400	EndPoint	RAID Mass Storage Controller
+NEW:	 21)  68:00:0  8086  1521   0x020000	EndPoint	Ethernet Network Controller
+NEW:	 22)  68:00:1  8086  1521   0x020000	EndPoint	Ethernet Network Controller
+NEW:	 23)  68:00:2  8086  1521   0x020000	EndPoint	Ethernet Network Controller
+NEW:	 24)  68:00:3  8086  1521   0x020000	EndPoint	Ethernet Network Controller
+NEW:	 25) 110:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 26) 110:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 27) 110:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 28) 110:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 29) 110:01:0  8086  352A   0x060400	Root Port	PCI-to-PCI Bridge
+NEW:	 30) 111:00:0  205E  5104   0x060400	Switch Up	PCI-to-PCI Bridge
+NEW:	 31) 112:01:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 32) 112:02:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 33) 112:03:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 34) 112:04:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 35) 112:28:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 36) 112:29:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 37) 112:30:0  205E  5104   0x060400	Switch Dwn	PCI-to-PCI Bridge
+NEW:	 38) 115:00:0  8086  10FB   0x020000	EndPoint	Ethernet Network Controller
+NEW:	 39) 116:00:0  1C5F  003F   0x010802	EndPoint	NVMe Mass Storage Controller
+NEW:	 40) 117:00:0  205E  0030   0x010802	EndPoint	NVMe Mass Storage Controller
+NEW:	 41) 118:00:0  205E  0020   0x088000	EndPoint	Other Base System Component
+NEW:	 42) 119:00:0  205E  0020   0x088000	EndPoint	Other Base System Component
+NEW:	 43) 154:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 44) 154:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 45) 154:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 46) 154:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 47) 198:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 48) 198:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 49) 198:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 50) 198:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 51) 242:00:0  8086  09A2   0x088000	RC IntEP	Other Base System Component
+NEW:	 52) 242:00:1  8086  09A4   0x088000	RC IntEP	Other Base System Component
+NEW:	 53) 242:00:2  8086  09A3   0x088000	RC IntEP	Other Base System Component
+NEW:	 54) 242:00:4  8086  0B23   0x080700	RC EvtColl	RC Event Collector Base System Component
+NEW:	 55) 242:01:0  8086  0B25   0x088000	RC IntEP	Other Base System Component
+NEW:	 56) 242:03:0  8086  09A6   0x088000	RC IntEP	Other Base System Component
+NEW:	 57) 242:03:1  8086  09A7   0x088000	RC IntEP	Other Base System Component
+NEW:	 58) 254:00:0  8086  3250   0x088000	RC IntEP	Other Base System Component
+NEW:	 59) 254:00:1  8086  3251   0x088000	RC IntEP	Other Base System Component
+NEW:	 60) 254:00:2  8086  3252   0x088000	RC IntEP	Other Base System Component
+NEW:	 61) 254:00:3  8086  0998   0x060000	RC IntEP	Host Bridge
+NEW:	 62) 254:00:5  8086  3255   0x088000	RC IntEP	Other Base System Component
+NEW:	 63) 254:01:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 64) 254:01:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 65) 254:01:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 66) 254:02:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 67) 254:02:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 68) 254:02:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 69) 254:03:0  8086  3240   0x088000	RC IntEP	Other Base System Component
+NEW:	 70) 254:03:1  8086  3241   0x088000	RC IntEP	Other Base System Component
+NEW:	 71) 254:03:2  8086  3242   0x088000	RC IntEP	Other Base System Component
+NEW:	 72) 254:05:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 73) 254:05:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 74) 254:05:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 75) 254:06:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 76) 254:06:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 77) 254:06:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 78) 254:07:0  8086  3245   0x088000	RC IntEP	Other Base System Component
+NEW:	 79) 254:07:1  8086  3246   0x088000	RC IntEP	Other Base System Component
+NEW:	 80) 254:07:2  8086  3247   0x088000	RC IntEP	Other Base System Component
+NEW:	 81) 254:12:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 82) 254:13:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 83) 254:14:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 84) 254:15:0  8086  324A   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 85) 254:26:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 86) 254:27:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 87) 254:28:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 88) 254:29:0  8086  2880   0x110100	RC IntEP	Performance counters Signal Processing Controller
+NEW:	 89) 255:00:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 90) 255:00:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 91) 255:00:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 92) 255:00:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 93) 255:00:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 94) 255:00:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 95) 255:00:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 96) 255:00:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 97) 255:01:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 98) 255:01:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	 99) 255:01:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	100) 255:01:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	101) 255:01:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	102) 255:01:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	103) 255:01:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	104) 255:01:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	105) 255:02:0  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	106) 255:02:1  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	107) 255:02:2  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	108) 255:02:3  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	109) 255:02:4  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	110) 255:02:5  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	111) 255:02:6  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	112) 255:02:7  8086  324C   0x088000	RC IntEP	Other Base System Component
+NEW:	113) 255:10:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	114) 255:10:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	115) 255:10:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	116) 255:10:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	117) 255:10:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	118) 255:10:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	119) 255:10:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	120) 255:10:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	121) 255:11:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	122) 255:11:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	123) 255:11:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	124) 255:11:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	125) 255:11:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	126) 255:11:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	127) 255:11:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	128) 255:11:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	129) 255:12:0  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	130) 255:12:1  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	131) 255:12:2  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	132) 255:12:3  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	133) 255:12:4  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	134) 255:12:5  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	135) 255:12:6  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	136) 255:12:7  8086  324D   0x088000	RC IntEP	Other Base System Component
+NEW:	137) 255:29:0  8086  344F   0x088000	RC IntEP	Other Base System Component
+NEW:	138) 255:29:1  8086  3457   0x088000	RC IntEP	Other Base System Component
+	     255:30:0  8086  3258   0x08        Type 0 Hdr	Base System Component
+	     255:30:1  8086  3259   0x08        Type 0 Hdr	Base System Component
+	     255:30:2  8086  325A   0x08        Type 0 Hdr	Base System Component
+	     255:30:3  8086  325B   0x08        Type 0 Hdr	Base System Component
+	     255:30:4  8086  325C   0x08        Type 0 Hdr	Base System Component
+	     255:30:5  8086  325D   0x08        Type 0 Hdr	Base System Component
+	     255:30:6  8086  325E   0x08        Type 0 Hdr	Base System Component
+	     255:30:7  8086  325F   0x08        Type 0 Hdr	Base System Component
+
+65378 Bus:Device:Functions scanned with invalid Vendor ID(s) 
+   20 non-PCI(e) devices (or Header only) found.
+Max Bus Number to scan: 255
+Begin PCIECV Test at: 2025/03/17 17:38:12
+Spec Rev: Test against 5.0 spec only
+Device Type:  Switch Upstream Port
+           Selected DUT:  111:00:0 VenID= 205E DevID= 5104 [Unknown]	PCI-to-PCI Bridge
+  Upstream Link Partner:  110:01:0 VenID= 8086 DevID= 352A <Intel Corporation>	PCI-to-PCI Bridge
+Number of Retimers in Link:  0
+Maximum timeout from reset de-assertion to first allowed Cfg command:      10000ms. (1000ms max for IL)
+Minimum delay from reset de-assertion (and DL_Up when applicable) to first Type 0 Cfg access attempt:  1000ms. ( 100ms max for IL)
+Minimum delay from reset de-assertion (and DL_Up when applicable) to first Type 1 Cfg access attempt:  1000ms. ( 100ms max for IL)
+Stop On Fail iteration 8000 from beginning of execution (0 value means testing will not stop on any failure)
+Reset Mechanism:  ALL
+Link Width chosen: x16.
+Test Selection: Individual Test Case(s)
+Reset LinkSpeed
+
+
+   Starting Test: TD_2_4 Response To Earliest Config Requests After Reset
+Rst = SBR
+Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+LS = 32.0 GT/s	LW = 16
+DUT Initialized State= 0
+DUT        ASPM State= 0
+Upstream   ASPM State= 0
+Earliest Time From Reset to First Config Command = 10000 ms.
+Earliest Time From DL_Up to First Config Access (for >= 8GT/s) = 1000 ms.
+1	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+2	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+3	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+4	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+5	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+6	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+7	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+8	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+9	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+10	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+11	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+12	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+13	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+14	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+15	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+16	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+17	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+18	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+19	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+20	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+21	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+22	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+23	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+24	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+25	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+26	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+27	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+28	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+29	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+30	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+31	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+32	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+33	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+34	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+35	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+36	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+37	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+38	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+39	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+40	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+41	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+42	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+43	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+44	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+45	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+46	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+47	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+48	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+49	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+50	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+51	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+52	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+53	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+54	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+55	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+56	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+57	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+58	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+59	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+60	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+61	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+62	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+63	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+64	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+65	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+66	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+67	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+68	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+69	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+70	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+71	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+72	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+73	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+74	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+75	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+76	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+77	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+78	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+79	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+80	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+81	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+82	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+83	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+84	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+85	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+86	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+87	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+88	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+89	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+90	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+91	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+92	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+93	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+94	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+95	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+96	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+97	Rst = SBR
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+98	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+99	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+100	Rst = SBR
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+DUT initialized 100 out of 100 times.
+
+Elapsed time: 624 secs.
+
+     Stopping Test: TD_2_4 Response To Earliest Config Requests After Reset
+     Number of: Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0)
+
+
+
+   Starting Test: TD_2_4 Response To Earliest Config Requests After Reset
+Rst = LDE
+Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+LS = 32.0 GT/s	LW = 16
+DUT Initialized State= 0
+DUT        ASPM State= 0
+Upstream   ASPM State= 0
+Earliest Time From Reset to First Config Command = 10000 ms.
+Earliest Time From DL_Up to First Config Access (for >= 8GT/s) = 1000 ms.
+1	Rst = LDE
+*RTT=1120
+ bdf=111:0:0 vRTT=1120
+2	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+3	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+4	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+5	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+6	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+7	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+8	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+9	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+10	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+11	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+12	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+13	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+14	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+15	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+16	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+17	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+18	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+19	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+20	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+21	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+22	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+23	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+24	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+25	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+26	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+27	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+28	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+29	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+30	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+31	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+32	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+33	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+34	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+35	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+36	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+37	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+38	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+39	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+40	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+41	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+42	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+43	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+44	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+45	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+46	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+47	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+48	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+49	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+50	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+51	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+52	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+53	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+54	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+55	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+56	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+57	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+58	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+59	Rst = LDE
+*RTT=1120
+ bdf=111:0:0 vRTT=1120
+60	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+61	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+62	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+63	Rst = LDE
+*RTT=1120
+ bdf=111:0:0 vRTT=1120
+64	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+65	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+66	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+67	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+68	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+69	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+70	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+71	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+72	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+73	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+74	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+75	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+76	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+77	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+78	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+79	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+80	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+81	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+82	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+83	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+84	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+85	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+86	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+87	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+88	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+89	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+90	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+91	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+92	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+93	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+94	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+95	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+96	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+97	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+98	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+99	Rst = LDE
+*RTT=1105
+ bdf=111:0:0 vRTT=1105
+100	Rst = LDE
+*RTT=1110
+ bdf=111:0:0 vRTT=1110
+DUT initialized 100 out of 100 times.
+
+Elapsed time: 624 secs.
+
+     Stopping Test: TD_2_4 Response To Earliest Config Requests After Reset
+     Number of: Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0)
+
+
+
+   Starting Test: TD_2_4 Response To Earliest Config Requests After Reset
+Rst = NOT
+Rst = NOT
+LS = 32.0 GT/s	LW = 16
+DUT Initialized State= 0
+DUT        ASPM State= 0
+Upstream   ASPM State= 0
+Earliest Time From Reset to First Config Command = 10000 ms.
+Earliest Time From DL_Up to First Config Access (for >= 8GT/s) = 1000 ms.
+1	Rst = NOT
+2	Rst = NOT
+3	Rst = NOT
+4	Rst = NOT
+5	Rst = NOT
+6	Rst = NOT
+7	Rst = NOT
+8	Rst = NOT
+9	Rst = NOT
+10	Rst = NOT
+11	Rst = NOT
+12	Rst = NOT
+13	Rst = NOT
+14	Rst = NOT
+15	Rst = NOT
+16	Rst = NOT
+17	Rst = NOT
+18	Rst = NOT
+19	Rst = NOT
+20	Rst = NOT
+21	Rst = NOT
+22	Rst = NOT
+23	Rst = NOT
+24	Rst = NOT
+25	Rst = NOT
+26	Rst = NOT
+27	Rst = NOT
+28	Rst = NOT
+29	Rst = NOT
+30	Rst = NOT
+31	Rst = NOT
+32	Rst = NOT
+33	Rst = NOT
+34	Rst = NOT
+35	Rst = NOT
+36	Rst = NOT
+37	Rst = NOT
+38	Rst = NOT
+39	Rst = NOT
+40	Rst = NOT
+41	Rst = NOT
+42	Rst = NOT
+43	Rst = NOT
+44	Rst = NOT
+45	Rst = NOT
+46	Rst = NOT
+47	Rst = NOT
+48	Rst = NOT
+49	Rst = NOT
+50	Rst = NOT
+51	Rst = NOT
+52	Rst = NOT
+53	Rst = NOT
+54	Rst = NOT
+55	Rst = NOT
+56	Rst = NOT
+57	Rst = NOT
+58	Rst = NOT
+59	Rst = NOT
+60	Rst = NOT
+61	Rst = NOT
+62	Rst = NOT
+63	Rst = NOT
+64	Rst = NOT
+65	Rst = NOT
+66	Rst = NOT
+67	Rst = NOT
+68	Rst = NOT
+69	Rst = NOT
+70	Rst = NOT
+71	Rst = NOT
+72	Rst = NOT
+73	Rst = NOT
+74	Rst = NOT
+75	Rst = NOT
+76	Rst = NOT
+77	Rst = NOT
+78	Rst = NOT
+79	Rst = NOT
+80	Rst = NOT
+81	Rst = NOT
+82	Rst = NOT
+83	Rst = NOT
+84	Rst = NOT
+85	Rst = NOT
+86	Rst = NOT
+87	Rst = NOT
+88	Rst = NOT
+89	Rst = NOT
+90	Rst = NOT
+91	Rst = NOT
+92	Rst = NOT
+93	Rst = NOT
+94	Rst = NOT
+95	Rst = NOT
+96	Rst = NOT
+97	Rst = NOT
+98	Rst = NOT
+99	Rst = NOT
+100	Rst = NOT
+DUT initialized 100 out of 100 times.
+
+Elapsed time: 1 secs.
+
+     Stopping Test: TD_2_4 Response To Earliest Config Requests After Reset
+     Number of: Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0)
+
+Passed:    SBR  32.0 GT/s  TD_2_4  Response To Earliest Config Requests After Reset
+Passed:    LDE  32.0 GT/s  TD_2_4  Response To Earliest Config Requests After Reset
+Passed:    NOT  32.0 GT/s  TD_2_4  Response To Earliest Config Requests After Reset
+           Cumulative Test Summary
+       Number of Tests SKIPPED:       0
+       Number of Tests PASSED:        3
+       Number of Tests FAILED:        0
+ Total Number of Tests RUN:           3
+
+Elapsed time: 20:49
+Test(s) completed at 2025/03/17 17:59:05
+End of PCIECV Testing.
+Total Log Summary [ Fails (0); Aborts (0); Warnings (0); Alerts (0); Errors (0) ]

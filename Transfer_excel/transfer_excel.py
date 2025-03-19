@@ -36,6 +36,7 @@ def get_result(id, usp, mt):
                 else:
                     status = 'PASS'
                 return status
+    return "SKIPPED"
 
 
 ws = wb['PCIECV_USP']
@@ -44,7 +45,7 @@ for row_idx, row in enumerate(ws.iter_rows(min_row=1), start=1):
         id = re.findall(r"(TD_\d+_\d+)", row[3].value)
         if id:
             result = get_result(id[0], True, True)
-            ws.cell(row=row_idx, column=10).value = result
+            ws.cell(row=row_idx, column=11).value = result
 
 ws = wb['PCIECV_DSP']
 for row_idx, row in enumerate(ws.iter_rows(min_row=1), start=1):
@@ -52,6 +53,6 @@ for row_idx, row in enumerate(ws.iter_rows(min_row=1), start=1):
         id = re.findall(r"(TD_\d+_\d+)", row[3].value)
         if id:
             result = get_result(id[0], False, True)
-            ws.cell(row=row_idx, column=10).value = result
+            ws.cell(row=row_idx, column=11).value = result
 
 wb.save("1.xlsx")

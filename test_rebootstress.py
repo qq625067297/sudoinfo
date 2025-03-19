@@ -50,10 +50,12 @@ def test_coldreboot():
     assert _ret == 0, f"{casename} stress test failed"
     logger.info(f"{casename} stress test finished...")
 
+
 def setup_module():
     logger.info("clean log...")
     # os.system("rm -rf reboottest_asic*.log")
     os.system("rm -rf reboot_testlog.zip")
+
 
 def teardown_module():
     logger.info("collect log")
