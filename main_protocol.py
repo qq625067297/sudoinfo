@@ -127,7 +127,8 @@ def compare_tree(host, username, password):
 
 def get_jsonfile(host, username, password):
     # 拷贝测试前pcie_tree文件
-    remotecp("pcie_tree.json", "pcie_tree.json", action='get', ip=host, username=username, password=password)
+    if not os.path.exists("pcie_tree.json"):
+        remotecp("pcie_tree.json", "pcie_tree.json", action='get', ip=host, username=username, password=password)
     # 拷贝测试前pcie_tree文件
     remotecp("pcie_tree_aftertest.json", "pcie_tree_aftertest.json", action='get', ip=host, username=username,
              password=password)

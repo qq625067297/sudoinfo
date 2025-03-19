@@ -86,7 +86,12 @@ def setup_module():
     logger.info("init environment")
     global devices
     devices = get_switch_info(logger)
-    save_data_file(devices, 'pcie_tree.json')
+    save_data_file(devices, 'pcie_tree_before.json')
+    if os.path.exists("pcie_tree.json"):
+        ret, msg = callcmd(logger, 'diff pcie_tree_before.json pcie_tree.json')
+        assert ret, "pcie tree check failed"
+    else:
+        os.rename("pcie_tree_before.json", 'pcie_tree.json')
 
 
 def teardown_module():
