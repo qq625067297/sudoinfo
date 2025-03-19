@@ -446,13 +446,16 @@ def setup_module():
     logger.info("clean old logs...")
     # os.system(f"ls *.log | grep -v {LOGFILE} | xargs rm -rf")
     os.system("rm -rf storage_testlog.zip > /dev/null 2>&1")
+    ret = os.system("which mkfs.xfs")
+    if ret:
+        os.system("apt install xfsprogs")
     get_switch_disk()
     assert len(diskname) != 0, "not found nvme disk under switch"
     os.system(f'umount -A {diskname[0]}')
 
 
 def teardown_module():
-    print("collect log")
+    logger.info("collect log")
     os.system("zip -r storage_testlog.zip storagetest_log")
 
 

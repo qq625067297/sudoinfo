@@ -239,7 +239,8 @@ def get_filelist():
 def get_test_logs(ip, username, password):
     zipfile = "all_logs.zip"
     remotecmd(
-        f"zip -r {zipfile} allure-results *-test-results.xml protocol_logs", ip=ip, username=username, password=password)
+        f"zip -r {zipfile} allure-results *-test-results.xml protocol_logs", ip=ip, username=username,
+        password=password)
     remotecp(zipfile, zipfile, action='get', ip=ip, username=username, password=password)
     callcmd(f"unzip -qo {zipfile}")
 
@@ -247,7 +248,8 @@ def get_test_logs(ip, username, password):
 def delete_remote_logs(ip, username, password):
     logger.info('delete logs...')
     remotecmd(
-        f"rm -rf allure-results *-test-results.xml protocol_logs all_logs.zip", ip=ip, username=username, password=password)
+        f"rm -rf allure-results *-test-results.xml protocol_logs all_logs.zip", ip=ip, username=username,
+        password=password)
 
 
 ##########main#############

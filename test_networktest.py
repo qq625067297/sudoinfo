@@ -374,6 +374,16 @@ def setup_module():
     os.system("ip -all netns delete > /dev/null 2>&1")
     os.system("rm -rf network_testlog.zip > /dev/null 2>&1")
     time.sleep(5)
+    ret = os.system("which iperf")
+    if ret:
+        os.system("apt install iperf")
+    ret = os.system("which netperf")
+    if ret:
+        os.system("apt install netperf")
+    ret = os.system("which ethtool")
+    if ret:
+        os.system("apt install ethtool")
+
     networklist = get_switch_networkinfo()
     if len(networklist) == 0:
         assert False, "no network ports found..."
