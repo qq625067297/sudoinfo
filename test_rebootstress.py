@@ -27,13 +27,17 @@ fh.setFormatter(formatter)
 logger.addHandler(ch)
 logger.addHandler(fh)
 
+
 def test_warmreboot():
     functionname = sys._getframe().f_code.co_name
     casename = functionname.replace("test_", "")
     logger.info(f"start {casename} stress test....")
     with open("param.txt") as f:
         param = f.read().strip()
-    _ret = os.system("bash ./reboottest_asic.sh %s" % ' '.join(param.split()[:3]))
+    param = param.split()
+    if param[0] == 'null':
+        pytest.skip("no os information, cold reboot skipped")
+    _ret = os.system("bash ./reboottest_asic.sh %s" % ' '.join(param[:3]))
     assert _ret == 0, f"{casename} stress test failed"
     logger.info(f"{casename} stress test finished...")
 
@@ -44,9 +48,10 @@ def test_coldreboot():
     logger.info(f"start {casename} stress test....")
     with open("param.txt") as f:
         param = f.read().strip()
-    if len(param.split()) != 6:
+    param = param.split()
+    if len(param) != 6 or param[-3] == 'null':
         pytest.skip("no bmc information, cold reboot skipped")
-    _ret = os.system("bash ./reboottest_asic.sh %s" % param)
+    _ret = os.system("bash ./reboottest_asic.sh %s" % ' '.join(param))
     assert _ret == 0, f"{casename} stress test failed"
     logger.info(f"{casename} stress test finished...")
 
@@ -59,6 +64,6 @@ def setup_module():
 
 def teardown_module():
     logger.info("collect log")
-    os.system("zip -r reboot_testlog.zip reboottest_log")
+    os.system("zip -r reboot_testlog.zip reboottest_log pciinfo")
     logger.info("reboot stress test finished...")
     time.sleep(120)
